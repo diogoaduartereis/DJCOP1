@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 551311821
+    locked: 0
+  - name: Wall
+    uniqueID: 793341519
+    locked: 0
+  - name: Wall 2
+    uniqueID: 2509739617
+    locked: 0
+  - name: Props
+    uniqueID: 181192891
+    locked: 0
+  - name: Props 2
+    uniqueID: 112241415
+    locked: 0
