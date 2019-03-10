@@ -26,7 +26,6 @@ public class BoardCreator : MonoBehaviour
     private Corridor[] corridors;                             // All the corridors that connect the rooms.
     private GameObject boardHolder;                           // GameObject that acts as a container for all other tiles.
 
-
     private void Start()
     {
         // Create the board holder.
@@ -41,6 +40,8 @@ public class BoardCreator : MonoBehaviour
 
         InstantiateTiles();
         InstantiateOuterWalls();
+
+        player.transform.position = new Vector3(rooms[0].xPos, rooms[0].yPos, 0);
     }
 
 
@@ -175,14 +176,16 @@ public class BoardCreator : MonoBehaviour
         {
             for (int j = 0; j < tiles[i].Length; j++)
             {
-                // ... and instantiate a floor tile for it.
-                InstantiateFromArray(floorTiles, i, j);
-
                 // If the tile type is Wall...
                 if (tiles[i][j] == TileType.Wall)
                 {
                     // ... instantiate a wall over the top.
                     InstantiateFromArray(wallTiles, i, j);
+                }
+                else
+                {
+                    // ... and instantiate a floor tile for it.
+                    InstantiateFromArray(floorTiles, i, j);
                 }
             }
         }
