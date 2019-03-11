@@ -289,17 +289,17 @@ PrefabInstance:
     - target: {fileID: 1064526183978783952, guid: 81fdabfd140dee44682d3af640b4e64a,
         type: 3}
       propertyPath: DashSpeed
-      value: 1.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1064526183978783952, guid: 81fdabfd140dee44682d3af640b4e64a,
         type: 3}
       propertyPath: DashTime
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1064526183978783952, guid: 81fdabfd140dee44682d3af640b4e64a,
         type: 3}
       propertyPath: DashCooldown
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81fdabfd140dee44682d3af640b4e64a, type: 3}
