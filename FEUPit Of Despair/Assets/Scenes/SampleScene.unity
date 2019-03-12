@@ -225,7 +225,7 @@ PrefabInstance:
     - target: {fileID: 5935593304196783294, guid: 097169726e378a44eb024ad9df76990a,
         type: 3}
       propertyPath: m_Name
-      value: diogo_player
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5935593304196783280, guid: 097169726e378a44eb024ad9df76990a,
         type: 3}
