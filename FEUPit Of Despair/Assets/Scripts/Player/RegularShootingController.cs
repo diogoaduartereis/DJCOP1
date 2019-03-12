@@ -11,8 +11,12 @@ public class RegularShootingController : MonoBehaviour
 
     public GameObject Bullet;
 
+    private GameObject BulletHolder;
+
     void Start()
     {
+        BulletHolder = new GameObject("Bullet Holder");
+
         Player = gameObject;
         rb = GetComponent<Rigidbody2D>();
     }
@@ -33,6 +37,8 @@ public class RegularShootingController : MonoBehaviour
             //create buller and give it a direction to move in
             GameObject newBullet = Instantiate(Bullet, Player.transform.position + ShootingOffset, Quaternion.identity) as GameObject;
             newBullet.GetComponentInChildren<BulletController>().SetMovementDirection(direction);
+
+            newBullet.transform.parent = BulletHolder.transform;
         }
     }
 }
