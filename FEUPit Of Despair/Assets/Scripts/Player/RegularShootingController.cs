@@ -6,6 +6,9 @@ public class RegularShootingController : MonoBehaviour
 {
     public Vector3 ShootingOffset = new Vector3(0,0.5f,0);
 
+    public float ShootingCooldown = 0.25f;
+    private float CurrentShootingCooldown = 0;
+
     private GameObject Player;
     private Rigidbody2D rb;
 
@@ -25,20 +28,37 @@ public class RegularShootingController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            //translate the mouse screen coordinate to in-game world coordinates
-            Vector3 mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            if (CurrentShootingCooldown <= 0)
+            {
+                CurrentShootingCooldown = ShootingCooldown;
+                //translate the mouse screen coordinate to in-game world coordinates
+                Vector3 mousePos = Input.mousePosition;
+                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            Vector3 playerPos = Player.transform.position + ShootingOffset;
+                Vector3 playerPos = Player.transform.position + ShootingOffset;
 
-            //calculate general direction for the buller
-            Vector3 direction = new Vector3(mousePos.x - playerPos.x, mousePos.y - playerPos.y, 0).normalized;
+                //calculate general direction for the buller
+                Vector3 direction = new Vector3(mousePos.x - playerPos.x, mousePos.y - playerPos.y, 0).normalized;
 
-            //create buller and give it a direction to move in
-            GameObject newBullet = Instantiate(Bullet, Player.transform.position + ShootingOffset, Quaternion.identity) as GameObject;
-            newBullet.GetComponentInChildren<BulletController>().SetMovementDirection(direction);
+                //create buller and give it a direction to move in
+                GameObject newBullet =
+                    Instantiate(Bullet, Player.transform.position + ShootingOffset, Quaternion.identity) as GameObject;
+                newBullet.GetComponentInChildren<BulletController>().SetMovementDirection(direction);
 
-            newBullet.transform.parent = BulletHolder.transform;
+                newBullet.transform.parent = BulletHolder.transform;
+            }
+        }
+    }
+
+    void Update()
+    {
+        if (CurrentShootingCooldown > 0)
+        {
+            CurrentShootingCooldown -= Time.deltaTime;
+        }
+        else
+        {
+            CurrentShootingCooldown = 0;
         }
     }
 }

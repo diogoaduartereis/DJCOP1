@@ -96,12 +96,6 @@ public class BoardCreator : MonoBehaviour
                 // Setup the corridor based on the room that was just created.
                 corridors[i].SetupCorridor(rooms[i], corridorLength, roomWidth, roomHeight, columns, rows, false);
             }
-
-            if (i == rooms.Length * .5f)
-            {
-                Vector3 playerPos = new Vector3(rooms[i].xPos, rooms[i].yPos, 0);
-                Instantiate(Player, playerPos, Quaternion.identity);
-            }
         }
 
     }
@@ -263,7 +257,10 @@ public class BoardCreator : MonoBehaviour
     {
         for(int i=0;i<rooms.Length;++i)
         {
-            Instantiate(Enemy[0], new Vector3(rooms[i].xPos + 0.5f, rooms[i].yPos + 0.5f, 0),Quaternion.identity);
+            for (int j = 0; j < 10; j++)
+            {
+                Instantiate(Enemy[0], new Vector3(rooms[i].xPos + 0.5f, rooms[i].yPos + 0.5f, 0), Quaternion.identity);
+            }
         }
     }
 }

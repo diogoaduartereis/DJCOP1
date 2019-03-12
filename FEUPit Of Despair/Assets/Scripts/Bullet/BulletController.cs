@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    public float MaxBulletLifetime = 20f;
+    private float currentBulletLifetime;
+
     public float BulletSpeed = 1.0f;
     private GameObject Bullet;
     private Rigidbody2D rb;
@@ -20,6 +23,8 @@ public class BulletController : MonoBehaviour
     {
         Bullet = gameObject;
         rb = GetComponent<Rigidbody2D>();
+
+        currentBulletLifetime = MaxBulletLifetime;
     }
 
     void Update()
@@ -27,6 +32,12 @@ public class BulletController : MonoBehaviour
         if (readyToUse)
         {
             rb.MovePosition(Bullet.transform.position + movementDirection * BulletSpeed * Time.deltaTime);
+
+            currentBulletLifetime -= Time.deltaTime;
+            if (currentBulletLifetime <= 0)
+            {
+                Destroy(this.Bullet);
+            }
         }
     }
 

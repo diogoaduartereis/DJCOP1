@@ -130,7 +130,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -162,4 +162,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ce01b3a82f2064b85ed4695f0af466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxBulletLifetime: 10
   BulletSpeed: 5
