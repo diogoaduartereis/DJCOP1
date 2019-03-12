@@ -16,28 +16,54 @@ public class MovementController : MonoBehaviour
     private float currDashCD = 0.0f;
     private float remainingDashTime = 0.0f;
 
+    private Animator anim;
+    private bool playerMoving;
+    private Vector2 lastMove;
+
     private Rigidbody2D rb;
 
     void Start()
     {
         Player = gameObject;
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
     
     void FixedUpdate()
     {
-       float xMov = Input.GetAxis("Horizontal") * PlayerSpeed;
-       float yMov = Input.GetAxis("Vertical") * PlayerSpeed;
+       playerMoving = false;
+       float horizontal = Input.GetAxis("Horizontal");
+       float vertical = Input.GetAxis("Vertical");
        if (!dashing)
        {
-           rb.MovePosition(Player.transform.position + new Vector3(xMov, yMov, 0));
-       }
+           rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0) * PlayerSpeed);
+            if (horizontal > 0.5f || horizontal < -0.5f)
+            {
+                //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
+                //Player.transform.Translate(new Vector3(horizontal * PlayerSpeed, 0f, 0f));
+                playerMoving = true;
+                lastMove = new Vector2(horizontal, 0f);
+            }
+            if (vertical > 0.5f || vertical < -0.5f)
+            {
+                //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
+                //Player.transform.Translate(new Vector3(0f, vertical * PlayerSpeed, 0f));
+                playerMoving = true;
+                lastMove = new Vector2(0f, vertical);
+            }
+
+            anim.SetFloat("MoveX", horizontal);
+            anim.SetFloat("MoveY", vertical);
+            anim.SetBool("PlayerMoving", playerMoving);
+            anim.SetFloat("LastMoveX", lastMove.x);
+            anim.SetFloat("LastMoveY", lastMove.y);
+        }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
        {
            if (!dashing && currDashCD <= 0 && remainingDashTime <= 0)
            {
-                dashDirection = (new Vector3(xMov,yMov,0)).normalized;
+                dashDirection = (new Vector3(horizontal,vertical,0)).normalized;
 
                 dashing = true;
                 currDashCD = DashCooldown;
