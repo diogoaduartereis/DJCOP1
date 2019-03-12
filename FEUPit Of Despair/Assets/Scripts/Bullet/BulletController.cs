@@ -36,6 +36,10 @@ public class BulletController : MonoBehaviour
         {
             if (!other.CompareTag("Player") && !other.CompareTag("Bullet"))
             {
+                if (other.CompareTag("Enemy"))
+                {
+                    Destroy(other.gameObject);
+                }
                 Destroy(this.Bullet);
             }
         }

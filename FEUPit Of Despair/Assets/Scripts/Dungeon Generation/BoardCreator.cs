@@ -19,7 +19,8 @@ public class BoardCreator : MonoBehaviour
     public GameObject[] floorTiles;                           // An array of floor tile prefabs.
     public GameObject[] wallTiles;                            // An array of wall tile prefabs.
     public GameObject[] outerWallTiles;                       // An array of outer wall tile prefabs.
-    public GameObject player;
+    public GameObject Player;
+    public GameObject[] Enemy;
 
     private TileType[][] tiles;                               // A jagged array of tile types representing the board, like a grid.
     private Room[] rooms;                                     // All the rooms that are created for this board.
@@ -41,7 +42,8 @@ public class BoardCreator : MonoBehaviour
         InstantiateTiles();
         InstantiateOuterWalls();
 
-        player.transform.position = new Vector3(rooms[0].xPos, rooms[0].yPos, 0);
+        Player.transform.position = new Vector3(rooms[0].xPos, rooms[0].yPos, 0);
+        CreateEnemies();
     }
 
 
@@ -98,7 +100,7 @@ public class BoardCreator : MonoBehaviour
             if (i == rooms.Length * .5f)
             {
                 Vector3 playerPos = new Vector3(rooms[i].xPos, rooms[i].yPos, 0);
-                Instantiate(player, playerPos, Quaternion.identity);
+                Instantiate(Player, playerPos, Quaternion.identity);
             }
         }
 
@@ -255,5 +257,13 @@ public class BoardCreator : MonoBehaviour
 
         // Set the tile's parent to the board holder.
         tileInstance.transform.parent = boardHolder.transform;
+    }
+
+    void CreateEnemies()
+    {
+        for(int i=0;i<rooms.Length;++i)
+        {
+            Instantiate(Enemy[0], new Vector3(rooms[i].xPos + 0.5f, rooms[i].yPos + 0.5f, 0),Quaternion.identity);
+        }
     }
 }

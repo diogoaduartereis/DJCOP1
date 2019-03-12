@@ -49,8 +49,6 @@ public class MovementController : MonoBehaviour
     void Update()
     {
         Player.transform.rotation = Quaternion.identity;
-        Debug.Log("Curr CD:"+currDashCD);
-        Debug.Log("CD:"+DashCooldown);
 
         if (dashing)
         {
