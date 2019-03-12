@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    public GameObject Player;
+    private GameObject Player;
     public float speed = 0.15f;
 
     public float DashSpeed = 1f;
@@ -20,6 +20,7 @@ public class MovementController : MonoBehaviour
 
     void Start()
     {
+        Player = gameObject;
         rb = GetComponent<Rigidbody2D>();
     }
     
@@ -48,11 +49,6 @@ public class MovementController : MonoBehaviour
     void Update()
     {
         Player.transform.rotation = Quaternion.identity;
-
-        Debug.Log("Dashing?:"+dashing);
-        Debug.Log("Dash CD:" + currDashCD);
-        Debug.Log("Remaninig Dash Time:" + remainingDashTime);
-        Debug.Log("Dash Direction" + dashDirection);
 
         if (dashing)
         {

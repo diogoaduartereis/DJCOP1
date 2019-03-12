@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1064526183978783953}
   - component: {fileID: 1064526183978783952}
+  - component: {fileID: 1692583686471514686}
   - component: {fileID: 1064526183978783955}
   - component: {fileID: 1064526183978783954}
   m_Layer: 0
@@ -46,8 +47,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2afa64742354bcd4c99504007530888f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1064526183978783958}
   speed: 0.05
+  DashSpeed: 1
+  DashCooldown: 5
+  DashTime: 1
+--- !u!114 &1692583686471514686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064526183978783958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864fc1779be043b48872e64e5f274658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullet: {fileID: 4179920753622694625, guid: 5acd0ed93c298184dbe3d64e232b182f, type: 3}
 --- !u!50 &1064526183978783955
 Rigidbody2D:
   serializedVersion: 4
