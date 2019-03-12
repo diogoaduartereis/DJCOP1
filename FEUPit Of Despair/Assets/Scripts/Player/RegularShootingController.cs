@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RegularShootingController : MonoBehaviour
 {
+    public Vector3 ShootingOffset = new Vector3(0,0.5f,0);
+
     private GameObject Player;
     private Rigidbody2D rb;
 
@@ -20,10 +22,11 @@ public class RegularShootingController : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0))
         {
             Vector3 mousePos = Input.mousePosition;
-            Vector3 playerPos = Player.transform.position;
-            Vector3 direction = new Vector3(mousePos.x - playerPos.x, mousePos.y - playerPos.y, 0);
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            Vector3 playerPos = Player.transform.position + ShootingOffset;
+            Vector3 direction = new Vector3(mousePos.x - playerPos.x, mousePos.y - playerPos.y, 0).normalized;
 
-            GameObject newBullet = Instantiate(Bullet, Player.transform.position, Quaternion.identity) as GameObject;
+            GameObject newBullet = Instantiate(Bullet, Player.transform.position + ShootingOffset, Quaternion.identity) as GameObject;
             newBullet.GetComponentInChildren<BulletController>().SetMovementDirection(direction);
         }
     }
