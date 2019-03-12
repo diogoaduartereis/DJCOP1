@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSpeed: 0.05
   DashSpeed: 5
-  DashCooldown: 2.52
+  DashCooldown: 1.5
   DashTime: 0.25
 --- !u!114 &1692583686471514686
 MonoBehaviour:
