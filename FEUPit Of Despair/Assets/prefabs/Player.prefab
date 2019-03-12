@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5935593304196783283}
   - component: {fileID: 5935593304196783284}
   m_Layer: 0
-  m_Name: diogo_player
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

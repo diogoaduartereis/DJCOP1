@@ -36,15 +36,15 @@ public class MovementController : MonoBehaviour
        float vertical = Input.GetAxis("Vertical");
        if (!dashing)
        {
-           rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0) * PlayerSpeed);
-            if (horizontal > 0.5f || horizontal < -0.5f)
+           rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0).normalized * PlayerSpeed);
+            if (horizontal > 0.1f || horizontal < -0.1f)
             {
                 //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
                 //Player.transform.Translate(new Vector3(horizontal * PlayerSpeed, 0f, 0f));
                 playerMoving = true;
                 lastMove = new Vector2(horizontal, 0f);
             }
-            if (vertical > 0.5f || vertical < -0.5f)
+            if (vertical > 0.1f || vertical < -0.1f)
             {
                 //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
                 //Player.transform.Translate(new Vector3(0f, vertical * PlayerSpeed, 0f));
