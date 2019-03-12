@@ -34,8 +34,10 @@ public class BulletController : MonoBehaviour
     {
         if (readyToUse)
         {
-            Debug.Log("Object Destroyed");
-            Destroy(this.Bullet);
+            if (!other.CompareTag("Player") && !other.CompareTag("Bullet"))
+            {
+                Destroy(this.Bullet);
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     private GameObject Player;
-    public float speed = 0.15f;
+    public float PlayerSpeed = 0.15f;
 
     public float DashSpeed = 1f;
     public float DashCooldown = 5f;
@@ -26,8 +26,8 @@ public class MovementController : MonoBehaviour
     
     void FixedUpdate()
     {
-       float xMov = Input.GetAxis("Horizontal") * speed;
-       float yMov = Input.GetAxis("Vertical") * speed;
+       float xMov = Input.GetAxis("Horizontal") * PlayerSpeed;
+       float yMov = Input.GetAxis("Vertical") * PlayerSpeed;
        if (!dashing)
        {
            rb.MovePosition(Player.transform.position + new Vector3(xMov, yMov, 0));
@@ -49,6 +49,8 @@ public class MovementController : MonoBehaviour
     void Update()
     {
         Player.transform.rotation = Quaternion.identity;
+        Debug.Log("Curr CD:"+currDashCD);
+        Debug.Log("CD:"+DashCooldown);
 
         if (dashing)
         {
@@ -71,5 +73,6 @@ public class MovementController : MonoBehaviour
         {
             currDashCD = 0;
         }
+
     }
 }
