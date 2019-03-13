@@ -420,6 +420,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8744308685234419528, guid: 8c9b11bdfaf15d94493086e6d3813ace,
         type: 3}
+    - target: {fileID: 3955458361445778719, guid: 6d7aa654b5bbe5847afc8b782cf1b83b,
+        type: 3}
+      propertyPath: healthPickup
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d7aa654b5bbe5847afc8b782cf1b83b, type: 3}
 --- !u!1001 &5846828026025010366
