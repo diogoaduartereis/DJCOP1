@@ -5,9 +5,9 @@ using UnityEngine;
 public class FireBallController : MonoBehaviour
 {
     public float MaxBulletLifetime = 20f;
+    public float FireballDamage = 1.0f;
     private float currentBulletLifetime;
 
-    public float FireBallSpeed = 2.0f;
     private GameObject Fireball;
     private Rigidbody2D rb;
     private Vector3 movementDirection;
@@ -51,7 +51,7 @@ public class FireBallController : MonoBehaviour
             {
                 if (other.CompareTag("Player"))
                 {
-                    var playerHealth = playerHealthController.playerHit();
+                    var playerHealth = playerHealthController.playerHit(FireballDamage);
                     if(playerHealth <= 0)
                     {
                         Destroy(other.gameObject);

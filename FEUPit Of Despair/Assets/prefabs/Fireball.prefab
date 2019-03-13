@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5881235206648676230}
   - component: {fileID: 5881235206648676229}
   - component: {fileID: 5881235206648676228}
-  - component: {fileID: 5881235206648676227}
+  - component: {fileID: 200350290538617145}
   m_Layer: 0
-  m_Name: Fire 16x_0
+  m_Name: Fireball
   m_TagString: Fireball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,9 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxBulletLifetime: 20
-  FireBallSpeed: 2
---- !u!58 &5881235206648676227
-CircleCollider2D:
+  FireballDamage: 1
+--- !u!70 &200350290538617145
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -150,6 +150,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Offset: {x: -0.0071156025, y: 0.021346297}
+  m_Size: {x: 0.5588412, y: 0.8292287}
+  m_Direction: 0

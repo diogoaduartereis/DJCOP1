@@ -258,9 +258,9 @@ public class BoardCreator : MonoBehaviour
 
     void CreateEnemies()
     {
-        for(int i=0;i<rooms.Length;++i)
+        for(int i=1;i<rooms.Length;++i)
         {
-            for (int j = 0; j < 10; j++)
+            for (int j = 0; j < 5; j++)
             {
                 Instantiate(Enemy[0], new Vector3(rooms[i].xPos + 0.5f, rooms[i].yPos + 0.5f, 0), Quaternion.identity);
             }

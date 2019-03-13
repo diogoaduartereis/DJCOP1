@@ -119,6 +119,7 @@ MonoBehaviour:
   DashSpeed: 5
   DashCooldown: 1.5
   DashTime: 0.25
+  GuardFilter: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
 --- !u!114 &7702725011222236546
 MonoBehaviour:
   m_ObjectHideFlags: 0

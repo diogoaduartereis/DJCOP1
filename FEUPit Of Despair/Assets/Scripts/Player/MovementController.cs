@@ -20,13 +20,24 @@ public class MovementController : MonoBehaviour
     private bool playerMoving;
     private Vector2 lastMove;
 
+    private HealthController health;
+    private bool guarding = false;
+
     private Rigidbody2D rb;
+
+    private SpriteRenderer renderer;
+    public Color GuardFilter = new Color(200,0.1f,0.1f,1.0f);
+    private Color RegularColor;
 
     void Start()
     {
         Player = gameObject;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        health = GetComponent<HealthController>();
+        renderer = GetComponent<SpriteRenderer>();
+
+        RegularColor = renderer.color;
     }
     
     void FixedUpdate()
@@ -36,28 +47,49 @@ public class MovementController : MonoBehaviour
        float vertical = Input.GetAxis("Vertical");
        if (!dashing)
        {
-           rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0).normalized * PlayerSpeed);
-            if (horizontal > 0.1f || horizontal < -0.1f)
-            {
-                //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
-                //Player.transform.Translate(new Vector3(horizontal * PlayerSpeed, 0f, 0f));
-                playerMoving = true;
-                lastMove = new Vector2(horizontal, 0f);
-            }
-            if (vertical > 0.1f || vertical < -0.1f)
-            {
-                //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
-                //Player.transform.Translate(new Vector3(0f, vertical * PlayerSpeed, 0f));
-                playerMoving = true;
-                lastMove = new Vector2(0f, vertical);
-            }
+           if (!guarding)
+           {
+               rb.MovePosition(
+                   Player.transform.position + new Vector3(horizontal, vertical, 0).normalized * PlayerSpeed);
+               if (horizontal > 0.1f || horizontal < -0.1f)
+               {
+                   //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
+                   //Player.transform.Translate(new Vector3(horizontal * PlayerSpeed, 0f, 0f));
+                   playerMoving = true;
+                   lastMove = new Vector2(horizontal, 0f);
+               }
 
-            anim.SetFloat("MoveX", horizontal);
-            anim.SetFloat("MoveY", vertical);
-            anim.SetBool("PlayerMoving", playerMoving);
-            anim.SetFloat("LastMoveX", lastMove.x);
-            anim.SetFloat("LastMoveY", lastMove.y);
-        }
+               if (vertical > 0.1f || vertical < -0.1f)
+               {
+                   //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
+                   //Player.transform.Translate(new Vector3(0f, vertical * PlayerSpeed, 0f));
+                   playerMoving = true;
+                   lastMove = new Vector2(0f, vertical);
+               }
+
+               anim.SetFloat("MoveX", horizontal);
+               anim.SetFloat("MoveY", vertical);
+               anim.SetBool("PlayerMoving", playerMoving);
+               anim.SetFloat("LastMoveX", lastMove.x);
+               anim.SetFloat("LastMoveY", lastMove.y);
+
+               if (Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.LeftControl))
+               {
+                   guarding = true;
+                   health.SetInvulnerable(true);
+                   renderer.color = GuardFilter;
+               }
+           }
+           else
+           {
+               if (Input.GetKeyUp(KeyCode.RightControl) || Input.GetKeyUp(KeyCode.LeftControl))
+               {
+                   guarding = false;
+                   health.SetInvulnerable(false);
+                   renderer.color = RegularColor;
+                }
+           }
+       }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
        {

@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
-    public int startingHealth;
-    private int currentHealth;
+    public float startingHealth;
+    private float currentHealth;
     private UIHealthTrigger healthTrigger;
+    private bool invulnerable = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,16 +17,19 @@ public class HealthController : MonoBehaviour
         healthTrigger = GameObject.FindGameObjectsWithTag("Health")[0].GetComponent<UIHealthTrigger>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public float playerHit(float damage)
     {
-        
+        if (!invulnerable)
+        {
+            currentHealth -= damage;
+            healthTrigger.changeImages((int) currentHealth);
+        }
+
+        return currentHealth;
     }
 
-    public int playerHit()
+    public void SetInvulnerable(bool status)
     {
-        currentHealth--;
-        healthTrigger.changeImages(currentHealth);
-        return currentHealth;
+        invulnerable = status;
     }
 }
