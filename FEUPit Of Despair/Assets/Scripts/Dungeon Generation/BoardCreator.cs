@@ -21,6 +21,7 @@ public class BoardCreator : MonoBehaviour
     public GameObject[] outerWallTiles;                       // An array of outer wall tile prefabs.
     public GameObject Player;
     public GameObject[] Enemy;
+    public GameObject testEnemy;
 
     private TileType[][] tiles;                               // A jagged array of tile types representing the board, like a grid.
     private Room[] rooms;                                     // All the rooms that are created for this board.
@@ -43,6 +44,8 @@ public class BoardCreator : MonoBehaviour
         InstantiateOuterWalls();
 
         Player.transform.position = new Vector3(rooms[0].xPos, rooms[0].yPos, 0);
+        testEnemy.transform.position = new Vector3(rooms[1].xPos, rooms[1].yPos, 0);
+
         CreateEnemies();
     }
 
