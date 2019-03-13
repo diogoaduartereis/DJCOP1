@@ -10,11 +10,14 @@ public class HealthController : MonoBehaviour
     private UIHealthTrigger healthTrigger;
     private bool invulnerable = false;
 
+    public Slider healthbar;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = startingHealth;
         healthTrigger = GameObject.FindGameObjectsWithTag("Health")[0].GetComponent<UIHealthTrigger>();
+        healthbar.value = CalculatedHealth();
     }
 
     public float playerHit(float damage)
@@ -22,7 +25,7 @@ public class HealthController : MonoBehaviour
         if (!invulnerable)
         {
             currentHealth -= damage;
-            healthTrigger.changeImages((int) currentHealth);
+            healthbar.value = CalculatedHealth();
         }
 
         return currentHealth;
@@ -31,5 +34,10 @@ public class HealthController : MonoBehaviour
     public void SetInvulnerable(bool status)
     {
         invulnerable = status;
+    }
+
+    float CalculatedHealth()
+    {
+        return currentHealth / startingHealth;
     }
 }
