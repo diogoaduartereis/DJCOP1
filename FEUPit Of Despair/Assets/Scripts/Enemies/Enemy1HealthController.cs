@@ -21,8 +21,6 @@ public class Enemy1HealthController : MonoBehaviour
     public float enemyHit(float damage)
     {
         currentHealth -= damage;
-        GetComponent<HealthBarScript>().scale(currentHealth);
-
         return currentHealth;
     }
 

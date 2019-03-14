@@ -47,7 +47,7 @@ public class FireBallController : MonoBehaviour
     {
         if (readyToUse)
         {
-            if (!other.CompareTag("Enemy") && !other.CompareTag("Fireball"))
+            if (!other.CompareTag("Enemy") && !other.CompareTag("Enemy Projectile") && !other.CompareTag("Bullet"))
             {
                 if (other.CompareTag("Player"))
                 {

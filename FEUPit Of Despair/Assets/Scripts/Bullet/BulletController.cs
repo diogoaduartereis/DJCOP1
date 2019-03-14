@@ -46,15 +46,14 @@ public class BulletController : MonoBehaviour
     {
         if (readyToUse)
         {
-            if (!other.CompareTag("Player") && !other.CompareTag("Bullet"))
+            if (!other.CompareTag("Player") && !other.CompareTag("Bullet") && !other.CompareTag("Enemy Projectile"))
             {
                 if (other.CompareTag("Enemy"))
                 {
-                    var enemyHealth = other.GetComponent<Enemy1HealthController>().enemyHit(BulletDamage);
+                    var enemyHealth = other.gameObject.GetComponent<Enemy1HealthController>().enemyHit(BulletDamage);
                     if (enemyHealth <= 0)
                     {
                         Destroy(other.gameObject);
-                        Destroy(this.Bullet);
                     }
                 }
                 Destroy(this.Bullet);
