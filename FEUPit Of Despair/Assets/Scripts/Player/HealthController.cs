@@ -7,7 +7,6 @@ public class HealthController : MonoBehaviour
 {
     public float startingHealth;
     private float currentHealth;
-    private UIHealthTrigger healthTrigger;
     private bool invulnerable = false;
 
     public Slider healthbar;
@@ -16,7 +15,6 @@ public class HealthController : MonoBehaviour
     void Start()
     {
         currentHealth = startingHealth;
-        healthTrigger = GameObject.FindGameObjectsWithTag("Health")[0].GetComponent<UIHealthTrigger>();
         healthbar.value = CalculatedHealth();
     }
 
