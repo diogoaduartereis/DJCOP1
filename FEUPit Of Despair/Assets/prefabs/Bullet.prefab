@@ -163,4 +163,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxBulletLifetime: 10
-  BulletSpeed: 5
+  BulletDamage: 1
+  BulletSpeed: 8

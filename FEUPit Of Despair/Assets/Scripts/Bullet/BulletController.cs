@@ -7,6 +7,7 @@ public class BulletController : MonoBehaviour
 {
     public float MaxBulletLifetime = 20f;
     private float currentBulletLifetime;
+    public float BulletDamage = 1.0f;
 
     public float BulletSpeed = 1.0f;
     private GameObject Bullet;
@@ -49,7 +50,12 @@ public class BulletController : MonoBehaviour
             {
                 if (other.CompareTag("Enemy"))
                 {
-                    Destroy(other.gameObject);
+                    var enemyHealth = other.GetComponent<Enemy1HealthController>().enemyHit(BulletDamage);
+                    if (enemyHealth <= 0)
+                    {
+                        Destroy(other.gameObject);
+                        Destroy(this.Bullet);
+                    }
                 }
                 Destroy(this.Bullet);
             }
