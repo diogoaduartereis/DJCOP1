@@ -7,7 +7,6 @@ public class HealthController : MonoBehaviour
 {
     public float startingHealth;
     private float currentHealth;
-    private UIHealthTrigger healthTrigger;
     private bool invulnerable = false;
 
     public Slider healthbar;

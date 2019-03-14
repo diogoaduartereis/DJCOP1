@@ -546,6 +546,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 5482935636186081990, guid: 11292ce6e337fcc4d8b21bc142cfd74e,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482935636186081990, guid: 11292ce6e337fcc4d8b21bc142cfd74e,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5846828026201319665, guid: 11292ce6e337fcc4d8b21bc142cfd74e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -700,16 +710,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.8100014
-      objectReference: {fileID: 0}
-    - target: {fileID: 5482935636186081990, guid: 11292ce6e337fcc4d8b21bc142cfd74e,
-        type: 3}
-      propertyPath: m_MaxValue
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5482935636186081990, guid: 11292ce6e337fcc4d8b21bc142cfd74e,
-        type: 3}
-      propertyPath: m_Value
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 840805342275472482, guid: 11292ce6e337fcc4d8b21bc142cfd74e,
         type: 3}
