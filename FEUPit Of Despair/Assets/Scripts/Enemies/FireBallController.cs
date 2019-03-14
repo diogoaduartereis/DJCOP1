@@ -13,9 +13,31 @@ public class FireBallController : MonoBehaviour
     private Vector3 movementDirection;
     private bool readyToUse = false;
     private HealthController playerHealthController;
+
+    public Vector3 OrientationVector = new Vector3(0,1,0);
+
     public void SetMovementDirection(Vector3 movementDirection)
     {
         this.movementDirection = movementDirection;
+
+        float rotationAngle = 180 - Vector3.Angle(this.movementDirection, this.OrientationVector);
+        if (Fireball == null)
+        {
+            Fireball = gameObject;
+        }
+
+        var angle = transform.rotation.eulerAngles;
+        if (movementDirection.x > 0)
+        {
+            angle.z = rotationAngle;
+        }
+        else
+        {
+            angle.z = -rotationAngle;
+        }
+
+        Fireball.transform.rotation = Quaternion.Euler(angle);
+
         readyToUse = true;
     }
 
