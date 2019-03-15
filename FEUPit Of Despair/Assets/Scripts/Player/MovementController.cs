@@ -36,7 +36,6 @@ public class MovementController : MonoBehaviour
         anim = GetComponent<Animator>();
         health = GetComponent<HealthController>();
         renderer = GetComponent<SpriteRenderer>();
-
         RegularColor = renderer.color;
     }
     

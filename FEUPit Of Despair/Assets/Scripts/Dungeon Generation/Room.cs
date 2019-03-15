@@ -8,6 +8,8 @@ public class Room
     public int roomHeight;                    // How many tiles high the room is.
     public Direction enteringCorridor;    // The direction of the corridor that is entering this room.
 
+    private int difficulty = 0;
+
 
     // This is used for the first room.  It does not have a Corridor parameter since there are no corridors yet.
     public void SetupRoom(IntRange widthRange, IntRange heightRange, int columns, int rows)
@@ -21,6 +23,15 @@ public class Room
         yPos = Mathf.RoundToInt(rows / 2f - roomHeight / 2f);
     }
 
+    public void SetDifficulty(int difficulty)
+    {
+        this.difficulty = difficulty;
+    }
+
+    public int GetDifficulty()
+    {
+        return this.difficulty;
+    }
 
     // This is an overload of the SetupRoom function and has a corridor parameter that represents the corridor entering the room.
     public void SetupRoom(IntRange widthRange, IntRange heightRange, int columns, int rows, Corridor corridor)

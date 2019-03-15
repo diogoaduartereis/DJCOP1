@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BoardCreator : MonoBehaviour
 {
@@ -28,6 +30,10 @@ public class BoardCreator : MonoBehaviour
     private Corridor[] corridors;                             // All the corridors that connect the rooms.
     private GameObject boardHolder;                           // GameObject that acts as a container for all other tiles.
 
+    public int EasyRoomSplit = 20;
+    public int NormalRoomSplit = 60;
+    public int HardRoomSplit = 20;
+
     private void Start()
     {
         // Create the board holder.
@@ -46,6 +52,12 @@ public class BoardCreator : MonoBehaviour
         Player.transform.position = new Vector3(rooms[0].xPos, rooms[0].yPos, 0);
         testEnemy.transform.position = new Vector3(rooms[1].xPos, rooms[1].yPos, 0);
 
+        if (EasyRoomSplit + NormalRoomSplit + HardRoomSplit != 100)
+        {
+            throw new Exception("Room Splits Must Sum Up To 100%");
+        }
+
+        setupRoomDifficulty();
         CreateEnemies();
     }
 
@@ -256,6 +268,25 @@ public class BoardCreator : MonoBehaviour
         tileInstance.transform.parent = boardHolder.transform;
     }
 
+    void setupRoomDifficulty()
+    {
+        IntRange range = new IntRange(0,100);
+        foreach (Room room in rooms)
+        {
+            int val = range.Random;
+            if (val < EasyRoomSplit)
+            {
+                room.SetDifficulty(0);
+            }else if (val < EasyRoomSplit + NormalRoomSplit)
+            {
+                room.SetDifficulty(1);
+            }
+            else if (val <= EasyRoomSplit + NormalRoomSplit + HardRoomSplit)
+            {
+                room.SetDifficulty(2);
+            }
+        }
+    }
     void CreateEnemies()
     {
         for(int i=1;i<rooms.Length;++i)
