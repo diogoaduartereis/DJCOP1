@@ -4,9 +4,24 @@ using UnityEngine;
 
 public class HealthBarScript : MonoBehaviour
 {
-    // Update is called once per frame
+    private float startingHealth;
+    private float currentHealth;
+    private float scaleHealth;
+    private float startingBarX;
+    private float startingBarY;
+    void Start()
+    {
+        startingBarX = this.transform.localScale.x;
+        startingBarY = this.transform.localScale.y;
+        startingHealth = GetComponentInParent<Enemy1HealthController>().getHealth();
+        currentHealth = startingHealth;
+    }
+
+
     public void scale(float currentHealth)
     {
-        transform.localScale += new Vector3(-currentHealth, 0, 0);
+        scaleHealth = currentHealth / startingHealth;
+        scaleHealth = startingBarX * scaleHealth;
+        transform.localScale = new Vector3(scaleHealth, startingBarY, 1);
     }
 }
