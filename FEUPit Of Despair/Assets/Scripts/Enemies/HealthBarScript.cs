@@ -20,8 +20,16 @@ public class HealthBarScript : MonoBehaviour
 
     public void scale(float currentHealth)
     {
-        scaleHealth = currentHealth / startingHealth;
-        scaleHealth = startingBarX * scaleHealth;
+        if (startingHealth > 0)
+        {
+            scaleHealth = currentHealth / startingHealth;
+            scaleHealth = startingBarX * scaleHealth;
+        }
+        else
+        {
+            scaleHealth = 1;
+        }
+
         transform.localScale = new Vector3(scaleHealth, startingBarY, 1);
     }
 }
