@@ -10,6 +10,8 @@ public class MovementController : MonoBehaviour
     public float DashSpeed = 1f;
     public float DashCooldown = 5f;
     public float DashTime = 1f;
+    public float DashCost = 10f;
+    private StaminaController StaminaController;
 
     private bool dashing = false;
     private Vector3 dashDirection;
@@ -37,6 +39,7 @@ public class MovementController : MonoBehaviour
         health = GetComponent<HealthController>();
         renderer = GetComponent<SpriteRenderer>();
         RegularColor = renderer.color;
+        StaminaController = this.GetComponent<StaminaController>();
     }
     
     void FixedUpdate()
@@ -92,14 +95,19 @@ public class MovementController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
        {
-           if (!dashing && currDashCD <= 0 && remainingDashTime <= 0)
-           {
-                dashDirection = (new Vector3(horizontal,vertical,0)).normalized;
+            
+            if (StaminaController.getStamina() >= this.DashCost)
+            {
+                if (!dashing && currDashCD <= 0 && remainingDashTime <= 0)
+                {
+                    dashDirection = (new Vector3(horizontal, vertical, 0)).normalized;
 
-                dashing = true;
-                currDashCD = DashCooldown;
-                remainingDashTime = DashTime;
-           }
+                    dashing = true;
+                    currDashCD = DashCooldown;
+                    remainingDashTime = DashTime;
+                    StaminaController.playerDash(this.DashCost);
+                }
+            }
        }
     }
 
