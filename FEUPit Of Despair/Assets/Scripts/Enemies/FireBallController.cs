@@ -73,12 +73,15 @@ public class FireBallController : MonoBehaviour
             {
                 if (other.CompareTag("Player"))
                 {
-                    var playerHealth = playerHealthController.playerHit(FireballDamage);
-                    if(playerHealth <= 0)
+                    if (playerHealthController != null)
                     {
-                        Destroy(other.gameObject);
-                        Destroy(this.Fireball);
-                        Application.Quit();
+                        var playerHealth = playerHealthController.playerHit(FireballDamage);
+                        if (playerHealth <= 0)
+                        {
+                            Destroy(other.gameObject);
+                            Destroy(this.Fireball);
+                            Application.Quit();
+                        }
                     }
                 }
                 Destroy(this.Fireball);
