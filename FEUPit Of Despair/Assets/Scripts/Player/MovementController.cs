@@ -31,6 +31,9 @@ public class MovementController : MonoBehaviour
     public Color GuardFilter = new Color(200,0.1f,0.1f,1.0f);
     private Color RegularColor;
 
+    public float GuardStaminaCost = 0.5f;
+
+
     void Start()
     {
         Player = gameObject;
@@ -77,9 +80,12 @@ public class MovementController : MonoBehaviour
 
                if (Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.LeftControl))
                {
-                   guarding = true;
-                   health.SetInvulnerable(true);
-                   renderer.color = GuardFilter;
+                   if (StaminaController.getStamina() > this.GuardStaminaCost)
+                   {
+                       guarding = true;
+                       health.SetInvulnerable(true, GuardStaminaCost);
+                       renderer.color = GuardFilter;
+                   }
                }
            }
            else
@@ -87,7 +93,7 @@ public class MovementController : MonoBehaviour
                if (Input.GetKeyUp(KeyCode.RightControl) || Input.GetKeyUp(KeyCode.LeftControl))
                {
                    guarding = false;
-                   health.SetInvulnerable(false);
+                   health.SetInvulnerable(false,0);
                    renderer.color = RegularColor;
                 }
            }
@@ -137,5 +143,12 @@ public class MovementController : MonoBehaviour
             currDashCD = 0;
         }
 
+    }
+
+    public void SetNotGuarding()
+    {
+        guarding = false;
+        health.SetInvulnerable(false, 0);
+        renderer.color = RegularColor;
     }
 }

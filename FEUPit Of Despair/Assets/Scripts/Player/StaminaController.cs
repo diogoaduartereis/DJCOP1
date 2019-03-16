@@ -27,6 +27,12 @@ public class StaminaController : MonoBehaviour
         staminabar.value = CalculatedStamina();
     }
 
+    public void playerDefend(float staminaSpent)
+    {
+        currentStamina -= staminaSpent;
+        staminabar.value = CalculatedStamina();
+    }
+
     public void StaminaRegen()
     {
         staminabar.value = CalculatedStamina();
