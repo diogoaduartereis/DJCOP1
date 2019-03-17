@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 4304681395145589170}
   - component: {fileID: 5335082078701532343}
   - component: {fileID: 218329838428082306}
-  - component: {fileID: 4304681395145589171}
   - component: {fileID: 4304681395145589172}
   - component: {fileID: 7629724776192427079}
   - component: {fileID: 4304681395145589181}
+  - component: {fileID: 4894542529385424920}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -139,32 +139,6 @@ MonoBehaviour:
   ShootingOffset: {x: 0, y: 0, z: 0}
   ShootingCooldown: 0.25
   Bullet: {fileID: 8461355047676980006, guid: 5acd0ed93c298184dbe3d64e232b182f, type: 3}
---- !u!61 &4304681395145589171
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4304681395145589182}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &4304681395145589172
 Rigidbody2D:
   serializedVersion: 4
@@ -216,3 +190,29 @@ MonoBehaviour:
   regenRate: 1
   staminaPerRegen: 1
   staminabar: {fileID: 0}
+--- !u!61 &4894542529385424920
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4304681395145589182}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

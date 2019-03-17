@@ -63,4 +63,12 @@ MonoBehaviour:
   - {fileID: 3667298280908411566, guid: 66cb4b64a1a91b44aa37f73e77370b2f, type: 3}
   outerWallTiles:
   - {fileID: 3667298280908411566, guid: 66cb4b64a1a91b44aa37f73e77370b2f, type: 3}
-  player: {fileID: 0}
+  Player: {fileID: 0}
+  Enemy: []
+  testEnemy: {fileID: 0}
+  EasyRoomSplit: 20
+  NormalRoomSplit: 60
+  HardRoomSplit: 20
+  HardEnemyCount: 20
+  NormalEnemyCount: 10
+  EasyEnemyCount: 5

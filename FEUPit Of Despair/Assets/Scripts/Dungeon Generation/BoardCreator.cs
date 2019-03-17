@@ -34,6 +34,10 @@ public class BoardCreator : MonoBehaviour
     public int NormalRoomSplit = 60;
     public int HardRoomSplit = 20;
 
+    public int HardEnemyCount = 15;
+    public int NormalEnemyCount = 10;
+    public int EasyEnemyCount = 5;
+
     private void Start()
     {
         // Create the board holder.
@@ -291,9 +295,29 @@ public class BoardCreator : MonoBehaviour
     {
         for(int i=1;i<rooms.Length;++i)
         {
-            for (int j = 0; j < 5; j++)
+            if (rooms[i].GetDifficulty() == 0)
             {
-                Instantiate(Enemy[0], new Vector3(rooms[i].xPos + 0.5f, rooms[i].yPos + 0.5f, 0), Quaternion.identity);
+                for (int j = 0; j < this.EasyEnemyCount; j++)
+                {
+                    Instantiate(Enemy[0], new Vector3(rooms[i].xPos + 0.5f, rooms[i].yPos + 0.5f, 0),
+                        Quaternion.identity);
+                }
+            }
+            else if (rooms[i].GetDifficulty() == 1)
+            {
+                for (int j = 0; j < this.NormalEnemyCount; j++)
+                {
+                    Instantiate(Enemy[0], new Vector3(rooms[i].xPos + 0.5f, rooms[i].yPos + 0.5f, 0),
+                        Quaternion.identity);
+                }
+            }
+            else if (rooms[i].GetDifficulty() == 2)
+            {
+                for (int j = 0; j < this.HardEnemyCount; j++)
+                {
+                    Instantiate(Enemy[0], new Vector3(rooms[i].xPos + 0.5f, rooms[i].yPos + 0.5f, 0),
+                        Quaternion.identity);
+                }
             }
         }
     }

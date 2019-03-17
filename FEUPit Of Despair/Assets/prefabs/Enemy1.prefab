@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b34cca420d3f04c9337ab7fc7909c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.02
+  speed: 0.03
   stoppingDistance: 5
   fireball: {fileID: 0}
   ShootingCooldown: 1
