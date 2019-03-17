@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.02
-  stoppingDistance: 2
+  stoppingDistance: 5
   fireball: {fileID: 0}
   ShootingCooldown: 1
   ShootingOffset: {x: -0.5, y: 0, z: 0}
@@ -276,11 +276,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShootingOffset: {x: 0, y: 0, z: 0}
-  ShootingCooldown: 2
+  ShootingCooldown: 1
   stoppingDistance: 3
   fireball: {fileID: 5881235206648676226, guid: 5bad800fd23e8144fa13a62ba26ae03b,
     type: 3}
-  fireballSpeed: 2
+  fireballSpeed: 5
 --- !u!114 &4783292585770177643
 MonoBehaviour:
   m_ObjectHideFlags: 0
