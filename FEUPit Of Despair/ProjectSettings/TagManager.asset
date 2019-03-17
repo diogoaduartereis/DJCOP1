@@ -7,8 +7,8 @@ TagManager:
   - Room
   - Bullet
   - Enemy
-  - Health
   - Enemy Projectile
+  - Pickup
   layers:
   - Default
   - TransparentFX

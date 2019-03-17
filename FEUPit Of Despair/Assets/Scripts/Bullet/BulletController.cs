@@ -46,7 +46,7 @@ public class BulletController : MonoBehaviour
     {
         if (readyToUse)
         {
-            if (!other.CompareTag("Player") && !other.CompareTag("Bullet") && !other.CompareTag("Enemy Projectile"))
+            if (!other.CompareTag("Player") && !other.CompareTag("Bullet") && !other.CompareTag("Enemy Projectile") && !other.CompareTag("Pickup"))
             {
                 if (other.CompareTag("Enemy"))
                 {

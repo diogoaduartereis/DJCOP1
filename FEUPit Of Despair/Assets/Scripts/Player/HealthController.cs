@@ -54,4 +54,15 @@ public class HealthController : MonoBehaviour
     {
         return currentHealth / startingHealth;
     }
+
+    public void Heal(float HealAmmount)
+    {
+        this.currentHealth += HealAmmount;
+        if (this.currentHealth > this.startingHealth)
+        {
+            this.currentHealth = this.startingHealth;
+        }
+
+        healthbar.value = CalculatedHealth();
+    }
 }
