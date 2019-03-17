@@ -53,7 +53,7 @@ public class BulletController : MonoBehaviour
                     var enemyHealth = other.gameObject.GetComponent<Enemy1HealthController>().enemyHit(BulletDamage);
                     if (enemyHealth <= 0)
                     {
-                        Destroy(other.gameObject);
+                        other.gameObject.GetComponent<SimpleEnemy>().Death();
                     }
                 }
                 Destroy(this.Bullet);

@@ -12,6 +12,7 @@ public class SimpleEnemy : MonoBehaviour
     public float ShootingCooldown;
     private float CurrentShootingCooldown = 0;
     public Vector3 ShootingOffset = new Vector3(-0.5f, 0, 0);
+    public GameObject healthPickup;
 
     private Transform target;
     // Start is called before the first frame update
@@ -52,5 +53,11 @@ public class SimpleEnemy : MonoBehaviour
         {
             CurrentShootingCooldown = 0;
         }
+    }
+
+    public void Death()
+    {
+        Instantiate(healthPickup, transform.position, healthPickup.transform.rotation); //your dropped sword
+        Destroy(this.gameObject);
     }
 }
