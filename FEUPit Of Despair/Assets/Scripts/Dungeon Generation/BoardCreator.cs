@@ -23,7 +23,7 @@ public class BoardCreator : MonoBehaviour
     public GameObject[] outerWallTiles;                       // An array of outer wall tile prefabs.
     public GameObject Player;
     public GameObject[] Enemy;
-    public GameObject testEnemy;
+    public GameObject Objective;
 
     private TileType[][] tiles;                               // A jagged array of tile types representing the board, like a grid.
     private Room[] rooms;                                     // All the rooms that are created for this board.
@@ -54,13 +54,13 @@ public class BoardCreator : MonoBehaviour
         InstantiateOuterWalls();
 
         Player.transform.position = new Vector3(rooms[0].xPos, rooms[0].yPos, 0);
-        testEnemy.transform.position = new Vector3(rooms[1].xPos, rooms[1].yPos, 0);
 
         if (EasyRoomSplit + NormalRoomSplit + HardRoomSplit != 100)
         {
             throw new Exception("Room Splits Must Sum Up To 100%");
         }
 
+        SpawnObjective(this.findFurthestRoom());
         setupRoomDifficulty();
         CreateEnemies();
     }
@@ -320,5 +320,32 @@ public class BoardCreator : MonoBehaviour
                 }
             }
         }
+    }
+
+    Room findFurthestRoom()
+    {
+        Room startignRoom = rooms[0];
+
+        Room furthest = rooms[0];
+        int distance = 0;
+        for (int i = 1; i < rooms.Length; ++i)
+        {
+            Room checkingRoom = rooms[i];
+            int dist = checkingRoom.distanceToRoom(startignRoom);
+
+            if (dist > distance)
+            {
+                furthest = checkingRoom;
+                distance = dist;
+            }
+        }
+
+        return furthest;
+    }
+
+    void SpawnObjective(Room room)
+    {
+        Tuple<int, int> mid = room.GetRoomMiddleCoordinates();
+        Instantiate(this.Objective, new Vector3(mid.Item1, mid.Item2, 0), Quaternion.identity);
     }
 }

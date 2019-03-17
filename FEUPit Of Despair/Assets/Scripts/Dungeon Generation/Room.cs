@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Room
 {
@@ -21,6 +23,22 @@ public class Room
         // Set the x and y coordinates so the room is roughly in the middle of the board.
         xPos = Mathf.RoundToInt(columns / 2f - roomWidth / 2f);
         yPos = Mathf.RoundToInt(rows / 2f - roomHeight / 2f);
+    }
+
+    public Tuple<int, int> GetRoomMiddleCoordinates()
+    {
+        int xMid = (xPos + (xPos + roomWidth)) / 2;
+        int yMid = (yPos + (yPos + roomHeight)) / 2;
+        return new Tuple<int, int>(xMid,yMid);
+    }
+
+    public int distanceToRoom(Room room)
+    {
+        Tuple<int, int> thisRoomMidle = this.GetRoomMiddleCoordinates();
+        Tuple<int, int> otherRoomMidle = room.GetRoomMiddleCoordinates();
+        float dist = Mathf.Sqrt(Mathf.Pow(thisRoomMidle.Item1 - otherRoomMidle.Item1, 2) +
+                                Mathf.Pow(thisRoomMidle.Item2 - otherRoomMidle.Item2, 2));
+        return Mathf.RoundToInt(dist);
     }
 
     public void SetDifficulty(int difficulty)

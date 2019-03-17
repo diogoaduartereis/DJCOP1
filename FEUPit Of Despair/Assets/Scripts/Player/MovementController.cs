@@ -115,6 +115,7 @@ public class MovementController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(Player.transform.position);
         Player.transform.rotation = Quaternion.identity;
 
         if (dashing)
