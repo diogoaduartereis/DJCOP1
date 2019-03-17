@@ -82,9 +82,7 @@ public class MovementController : MonoBehaviour
                {
                    if (StaminaController.getStamina() > this.GuardStaminaCost)
                    {
-                       guarding = true;
-                       health.SetInvulnerable(true, GuardStaminaCost);
-                       renderer.color = GuardFilter;
+                        SetGuarding();
                    }
                }
            }
@@ -92,10 +90,8 @@ public class MovementController : MonoBehaviour
            {
                if (Input.GetKeyUp(KeyCode.RightControl) || Input.GetKeyUp(KeyCode.LeftControl))
                {
-                   guarding = false;
-                   health.SetInvulnerable(false,0);
-                   renderer.color = RegularColor;
-                }
+                   SetNotGuarding();
+               }
            }
        }
 
@@ -150,5 +146,12 @@ public class MovementController : MonoBehaviour
         guarding = false;
         health.SetInvulnerable(false, 0);
         renderer.color = RegularColor;
+    }
+
+    public void SetGuarding()
+    {
+        guarding = true;
+        health.SetInvulnerable(true, GuardStaminaCost);
+        renderer.color = GuardFilter;
     }
 }
