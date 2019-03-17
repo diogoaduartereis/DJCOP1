@@ -123,6 +123,7 @@ MonoBehaviour:
   DashTime: 0.25
   DashCost: 10
   GuardFilter: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
+  GuardStaminaCost: 5
 --- !u!114 &218329838428082306
 MonoBehaviour:
   m_ObjectHideFlags: 0
