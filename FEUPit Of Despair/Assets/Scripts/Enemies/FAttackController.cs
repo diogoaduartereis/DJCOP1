@@ -2,64 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBallController : MonoBehaviour
+public class FAttackController : MonoBehaviour
 {
     public float MaxBulletLifetime = 20f;
     public float FireballDamage = 1.0f;
     private float currentBulletLifetime;
 
-    private GameObject Fireball;
+    private GameObject FAttack;
     private Rigidbody2D rb;
     private Vector3 movementDirection;
     private bool readyToUse = false;
     private HealthController playerHealthController;
+    private StaminaController playerStaminaController;
 
-    public Vector3 OrientationVector = new Vector3(0,1,0);
+    public Vector3 OrientationVector = new Vector3(0, 1, 0);
 
     public void SetMovementDirection(Vector3 movementDirection)
     {
         this.movementDirection = movementDirection;
-
-        float rotationAngle = 180 - Vector3.Angle(this.movementDirection, this.OrientationVector);
-        if (Fireball == null)
-        {
-            Fireball = gameObject;
-        }
-
-        var angle = transform.rotation.eulerAngles;
-        if (movementDirection.x > 0)
-        {
-            angle.z = rotationAngle;
-        }
-        else
-        {
-            angle.z = -rotationAngle;
-        }
-
-        Fireball.transform.rotation = Quaternion.Euler(angle);
 
         readyToUse = true;
     }
 
     void Start()
     {
-        Fireball = gameObject;
+        FAttack = gameObject;
         rb = GetComponent<Rigidbody2D>();
 
         currentBulletLifetime = MaxBulletLifetime;
         playerHealthController = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<HealthController>();
+        playerStaminaController = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<StaminaController>();
     }
 
     void Update()
     {
         if (readyToUse)
         {
-            Fireball.GetComponent<Rigidbody2D>().velocity = movementDirection;
+            FAttack.GetComponent<Rigidbody2D>().velocity = movementDirection;
 
             currentBulletLifetime -= Time.deltaTime;
             if (currentBulletLifetime <= 0)
             {
-                Destroy(this.Fireball);
+                Destroy(this.FAttack);
             }
         }
     }
@@ -68,7 +52,7 @@ public class FireBallController : MonoBehaviour
     {
         this.FireballDamage = damage;
     }
-    
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (readyToUse)
@@ -83,14 +67,13 @@ public class FireBallController : MonoBehaviour
                         if (playerHealth <= 0)
                         {
                             Destroy(other.gameObject);
-                            Destroy(this.Fireball);
+                            Destroy(this.FAttack);
                             Application.Quit();
                         }
                     }
                 }
-                Destroy(this.Fireball);
+                Destroy(this.FAttack);
             }
         }
     }
-    
 }
