@@ -8,16 +8,16 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/BossScene.unity
-    guid: 146c7968418f39445ae9cf7bc79f614f
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: aa56b4d02ce097b4f99d65793bb8e49c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 42a20912c6c3d464e9d712d3baef3432
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: aa56b4d02ce097b4f99d65793bb8e49c
+  - enabled: 0
+    path: Assets/Scenes/BossScene.unity
+    guid: 146c7968418f39445ae9cf7bc79f614f
+  - enabled: 0
     path: Assets/Scenes/GameOverMenu.unity
     guid: e09e45fd4d0f149c6b31e5714045117e
   m_configObjects: {}
