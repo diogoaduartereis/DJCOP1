@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 982177744084355388}
   m_Layer: 0
   m_Name: Objective
-  m_TagString: Finish
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,3 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6dfa1afd1262841afb30a873fabb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WaveCount: 5
+  EnemiesPerWave: 10
+  TimeBetweenWaves: 20
