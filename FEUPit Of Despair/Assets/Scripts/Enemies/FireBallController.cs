@@ -64,6 +64,10 @@ public class FireBallController : MonoBehaviour
         }
     }
 
+    public void setDamage(float damage)
+    {
+        this.FireballDamage = damage;
+    }
     
     void OnTriggerEnter2D(Collider2D other)
     {

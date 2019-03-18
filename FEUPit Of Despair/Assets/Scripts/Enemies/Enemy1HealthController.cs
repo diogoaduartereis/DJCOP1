@@ -25,8 +25,8 @@ public class Enemy1HealthController : MonoBehaviour
         return currentHealth;
     }
 
-    public float getHealth()
+    public float getStartingHealth()
     {
-        return currentHealth;
+        return startingHealth;
     }
 }

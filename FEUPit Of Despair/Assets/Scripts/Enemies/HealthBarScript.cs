@@ -13,13 +13,14 @@ public class HealthBarScript : MonoBehaviour
     {
         startingBarX = this.transform.localScale.x;
         startingBarY = this.transform.localScale.y;
-        startingHealth = GetComponentInParent<Enemy1HealthController>().getHealth();
+        startingHealth = GetComponentInParent<Enemy1HealthController>().getStartingHealth();
         currentHealth = startingHealth;
     }
 
 
     public void scale(float currentHealth)
     {
+        
         if (startingHealth > 0)
         {
             scaleHealth = currentHealth / startingHealth;
@@ -29,7 +30,7 @@ public class HealthBarScript : MonoBehaviour
         {
             scaleHealth = 1;
         }
-
-        transform.localScale = new Vector3(scaleHealth, startingBarY, 1);
+       
+        transform.localScale = new Vector3(scaleHealth, startingBarY, 0);
     }
 }
