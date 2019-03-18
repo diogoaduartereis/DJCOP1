@@ -196,6 +196,12 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 5935593303045213849}
+    - target: {fileID: 3955458361445778719, guid: 6d7aa654b5bbe5847afc8b782cf1b83b,
+        type: 3}
+      propertyPath: Enemy.Array.data[2]
+      value: 
+      objectReference: {fileID: 1530956628554421995, guid: 5f9968ac536d3b94ea5d03b119c415ff,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d7aa654b5bbe5847afc8b782cf1b83b, type: 3}
 --- !u!114 &2104122164637027960 stripped
@@ -346,6 +352,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760809833010390827, guid: 11292ce6e337fcc4d8b21bc142cfd74e,
+        type: 3}
+      propertyPath: StartingTime
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11292ce6e337fcc4d8b21bc142cfd74e, type: 3}
