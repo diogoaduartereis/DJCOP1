@@ -64,12 +64,16 @@ MonoBehaviour:
   outerWallTiles:
   - {fileID: 3667298280908411566, guid: 66cb4b64a1a91b44aa37f73e77370b2f, type: 3}
   Player: {fileID: 0}
-  Enemy: []
+  Enemy:
+  - {fileID: 2433622068089463767, guid: 8c9b11bdfaf15d94493086e6d3813ace, type: 3}
+  - {fileID: 1530956628554421995, guid: 5f9968ac536d3b94ea5d03b119c415ff, type: 3}
+  - {fileID: 1028873774977284416, guid: 2da3ee15903521f47a7636dd811d1de1, type: 3}
+  - {fileID: 7212699110553674139, guid: d33fad847e235c74abd1ad15fbc7f337, type: 3}
   Objective: {fileID: 3460441697557326575, guid: 015505a244c0821439f4c454631c3f0c,
     type: 3}
   EasyRoomSplit: 20
   NormalRoomSplit: 60
   HardRoomSplit: 20
-  HardEnemyCount: 0
-  NormalEnemyCount: 0
-  EasyEnemyCount: 0
+  HardEnemyCount: 20
+  NormalEnemyCount: 10
+  EasyEnemyCount: 5

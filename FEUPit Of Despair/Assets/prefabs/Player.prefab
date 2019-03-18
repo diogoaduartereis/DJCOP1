@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShootingOffset: {x: 0, y: 0, z: 0}
-  ShootingCooldown: 0.25
+  ShootingCooldown: 0.1
   Bullet: {fileID: 8461355047676980006, guid: 5acd0ed93c298184dbe3d64e232b182f, type: 3}
 --- !u!50 &4304681395145589172
 Rigidbody2D:
