@@ -56,6 +56,14 @@ public class BulletController : MonoBehaviour
                         other.gameObject.GetComponent<SimpleEnemy>().Death();
                     }
                 }
+                else if (other.CompareTag("Vidal"))
+                {
+                    var enemyHealth = other.gameObject.GetComponent<VidalHealthController>().enemyHit(BulletDamage);
+                    if (enemyHealth <= 0)
+                    {
+                        other.gameObject.GetComponent<VidalController>().Death();
+                    }
+                }
                 Destroy(this.Bullet);
             }
         }

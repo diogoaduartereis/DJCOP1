@@ -1,0 +1,51 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class VidalHealthController : MonoBehaviour
+{
+    public float startingHealth;
+    private float currentHealth;
+    private float HP75;
+    private float HP50;
+    private float HP25;
+    public GameObject Teachers;
+    public GameObject Torcato;
+    public GameObject ToFerreira;
+    public GameObject Villate;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        currentHealth = startingHealth;
+        HP75 = startingHealth - (startingHealth / 4);
+        HP50 = startingHealth - 2*(startingHealth / 4);
+        HP25 = startingHealth - 3*(startingHealth / 4);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+      
+    }
+
+    public float enemyHit(float damage)
+    {
+        currentHealth -= damage;
+        this.GetComponentInChildren<VidalHealthbarScript>().scale(currentHealth);
+
+        if(HP75 <= currentHealth + 0.8 || HP75 >= currentHealth - 0.8)
+        {
+            GameObject TeachersInst = Instantiate(Teachers, (new Vector3(1, 0, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
+            GameObject TorcatoInst = Instantiate(Torcato, (new Vector3(2, 0, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
+            GameObject ToFerreiraInst = Instantiate(ToFerreira, (new Vector3(-1, 0, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
+            GameObject VillateFInst = Instantiate(Villate, (new Vector3(-2, 0, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
+        }
+        return currentHealth;
+    }
+
+    public float getStartingHealth()
+    {
+        return startingHealth;
+    }
+}
