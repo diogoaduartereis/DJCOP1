@@ -154,7 +154,7 @@ MonoBehaviour:
   speed: 0.03
   stoppingDistance: 5
   fireball: {fileID: 0}
-  ShootingCooldown: 3
+  ShootingCooldown: 4
   ShootingOffset: {x: -0.5, y: 0, z: 0}
   healthPickup: {fileID: 8340874362084719924, guid: 7f5402249f77ef6489ba2deaadcc6270,
     type: 3}
@@ -175,7 +175,7 @@ MonoBehaviour:
   stoppingDistance: 3
   SleepNote: {fileID: 764096326642793717, guid: bddb928d58fff2e44bb733589f00f41d,
     type: 3}
-  SleepNoteSpeed: 2
+  SleepNoteSpeed: 1
   IdleFace: {fileID: 21300000, guid: 77a5777896b2128499347063cfd1b27d, type: 3}
   AttackFace: {fileID: 21300000, guid: be71080ba7bd05e4dba98c17cb0ef4ac, type: 3}
 --- !u!70 &8632819475142874347

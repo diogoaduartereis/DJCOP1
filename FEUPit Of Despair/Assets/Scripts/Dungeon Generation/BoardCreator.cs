@@ -313,7 +313,7 @@ public class BoardCreator : MonoBehaviour
             {
                 for (int j = 0; j < this.HardEnemyCount; j++)
                 {
-                    SpawnRandomEnemy(1);
+                    SpawnRandomEnemy(i);
                 }
             }
         }
@@ -350,7 +350,11 @@ public class BoardCreator : MonoBehaviour
     {
         IntRange range = new IntRange(0, Enemy.Length);
         int selected = range.Random;
-        Instantiate(Enemy[selected], new Vector3(rooms[roomIndex].xPos + 0.5f, rooms[roomIndex].yPos + 0.5f, 0),
+
+        IntRange roomXRange = new IntRange(rooms[roomIndex].xPos, rooms[roomIndex].xPos + rooms[roomIndex].roomWidth/2);
+        IntRange roomYRange = new IntRange(rooms[roomIndex].yPos, rooms[roomIndex].yPos + rooms[roomIndex].roomHeight/2);
+
+        Instantiate(Enemy[selected], new Vector3(roomXRange.Random, roomYRange.Random, 0),
             Quaternion.identity);
     }
 }
