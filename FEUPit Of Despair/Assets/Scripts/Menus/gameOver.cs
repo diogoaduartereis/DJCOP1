@@ -36,7 +36,7 @@ public class gameOver : MonoBehaviour
 
     public void StartLevel()
     {
-        // Application.LoadLevel(1); // To be continued
+        Application.LoadLevel(1); // To be continued
     }
 
     public void ExitGame()
