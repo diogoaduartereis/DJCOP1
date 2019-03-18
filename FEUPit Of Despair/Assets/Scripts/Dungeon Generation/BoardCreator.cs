@@ -29,6 +29,7 @@ public class BoardCreator : MonoBehaviour
     private Room[] rooms;                                     // All the rooms that are created for this board.
     private Corridor[] corridors;                             // All the corridors that connect the rooms.
     private GameObject boardHolder;                           // GameObject that acts as a container for all other tiles.
+    private GameObject EnemyHolder;
 
     public int EasyRoomSplit = 20;
     public int NormalRoomSplit = 60;
@@ -42,6 +43,7 @@ public class BoardCreator : MonoBehaviour
     {
         // Create the board holder.
         boardHolder = new GameObject("BoardHolder");
+        EnemyHolder = new GameObject("Mobs");
 
         SetupTilesArray();
 
@@ -343,7 +345,8 @@ public class BoardCreator : MonoBehaviour
     void SpawnObjective(Room room)
     {
         Tuple<int, int> mid = room.GetRoomMiddleCoordinates();
-        Instantiate(this.Objective, new Vector3(mid.Item1, mid.Item2, 0), Quaternion.identity);
+        GameObject obj = Instantiate(this.Objective, new Vector3(mid.Item1, mid.Item2, 0), Quaternion.identity) as GameObject;
+        obj.transform.position = new Vector3(mid.Item1, mid.Item2, 0);
     }
 
     void SpawnRandomEnemy(int roomIndex)
@@ -354,7 +357,8 @@ public class BoardCreator : MonoBehaviour
         IntRange roomXRange = new IntRange(rooms[roomIndex].xPos, rooms[roomIndex].xPos + rooms[roomIndex].roomWidth/2);
         IntRange roomYRange = new IntRange(rooms[roomIndex].yPos, rooms[roomIndex].yPos + rooms[roomIndex].roomHeight/2);
 
-        Instantiate(Enemy[selected], new Vector3(roomXRange.Random, roomYRange.Random, 0),
-            Quaternion.identity);
+        GameObject mob = Instantiate(Enemy[selected], new Vector3(roomXRange.Random, roomYRange.Random, 0),
+            Quaternion.identity) as GameObject;
+        mob.transform.parent = EnemyHolder.transform;
     }
 }
