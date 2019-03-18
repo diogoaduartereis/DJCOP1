@@ -60,7 +60,7 @@ public class MovementController : MonoBehaviour
                 if (!guarding)
                 {
                     rb.MovePosition(
-                        Player.transform.position + new Vector3(horizontal, vertical, 0).normalized * PlayerSpeed);
+                        Player.transform.position + new Vector3(horizontal, vertical, 0).normalized * PlayerSpeed * Time.deltaTime);
                     if (horizontal > 0.1f || horizontal < -0.1f)
                     {
                         //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
@@ -102,7 +102,7 @@ public class MovementController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
-       {
+        {
             
             if (StaminaController.getStamina() >= this.DashCost)
             {
@@ -117,6 +117,7 @@ public class MovementController : MonoBehaviour
                 }
             }
        }
+
     }
 
     void Update()
