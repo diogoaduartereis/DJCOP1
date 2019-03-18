@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   stoppingDistance: 3
   SleepNote: {fileID: 764096326642793717, guid: bddb928d58fff2e44bb733589f00f41d,
     type: 3}
-  SleepNoteSpeed: 1
+  SleepNoteSpeed: 2
   IdleFace: {fileID: 21300000, guid: 77a5777896b2128499347063cfd1b27d, type: 3}
   AttackFace: {fileID: 21300000, guid: be71080ba7bd05e4dba98c17cb0ef4ac, type: 3}
 --- !u!1 &1028873775610225658
