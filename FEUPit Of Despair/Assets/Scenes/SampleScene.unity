@@ -221,81 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &900821638 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 944907862448257977, guid: 8c9b11bdfaf15d94493086e6d3813ace,
-    type: 3}
-  m_PrefabInstance: {fileID: 944907863191636287}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &944907863191636287
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 944907862448257977, guid: 8c9b11bdfaf15d94493086e6d3813ace,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy1
-      objectReference: {fileID: 0}
-    - target: {fileID: 199924966170007010, guid: 8c9b11bdfaf15d94493086e6d3813ace,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 36
-      objectReference: {fileID: 0}
-    - target: {fileID: 199924966170007010, guid: 8c9b11bdfaf15d94493086e6d3813ace,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 199924966170007010, guid: 8c9b11bdfaf15d94493086e6d3813ace,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 199924966170007010, guid: 8c9b11bdfaf15d94493086e6d3813ace,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 199924966170007010, guid: 8c9b11bdfaf15d94493086e6d3813ace,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 199924966170007010, guid: 8c9b11bdfaf15d94493086e6d3813ace,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 199924966170007010, guid: 8c9b11bdfaf15d94493086e6d3813ace,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 199924966170007010, guid: 8c9b11bdfaf15d94493086e6d3813ace,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 199924966170007010, guid: 8c9b11bdfaf15d94493086e6d3813ace,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 199924966170007010, guid: 8c9b11bdfaf15d94493086e6d3813ace,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 199924966170007010, guid: 8c9b11bdfaf15d94493086e6d3813ace,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8c9b11bdfaf15d94493086e6d3813ace, type: 3}
 --- !u!114 &2104122164637027960 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6855213811352812596, guid: 11292ce6e337fcc4d8b21bc142cfd74e,
@@ -394,16 +319,22 @@ PrefabInstance:
         type: 3}
       propertyPath: Enemy.Array.data[0]
       value: 
-      objectReference: {fileID: 900821638}
+      objectReference: {fileID: 1028873774977284416, guid: 2da3ee15903521f47a7636dd811d1de1,
+        type: 3}
     - target: {fileID: 3955458361445778719, guid: 6d7aa654b5bbe5847afc8b782cf1b83b,
         type: 3}
       propertyPath: testEnemy
       value: 
-      objectReference: {fileID: 900821638}
+      objectReference: {fileID: 0}
     - target: {fileID: 3955458361445778719, guid: 6d7aa654b5bbe5847afc8b782cf1b83b,
         type: 3}
       propertyPath: healthPickup
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955458361445778719, guid: 6d7aa654b5bbe5847afc8b782cf1b83b,
+        type: 3}
+      propertyPath: EasyEnemyCount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d7aa654b5bbe5847afc8b782cf1b83b, type: 3}

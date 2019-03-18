@@ -32,7 +32,8 @@ public class MovementController : MonoBehaviour
     private Color RegularColor;
 
     public float GuardStaminaCost = 0.5f;
-
+    private float FreezeTime;
+    private bool Frozen;
 
     void Start()
     {
@@ -43,6 +44,7 @@ public class MovementController : MonoBehaviour
         renderer = GetComponent<SpriteRenderer>();
         RegularColor = renderer.color;
         StaminaController = this.GetComponent<StaminaController>();
+        FreezeTime = 0;
     }
     
     void FixedUpdate()
@@ -50,50 +52,54 @@ public class MovementController : MonoBehaviour
        playerMoving = false;
        float horizontal = Input.GetAxis("Horizontal");
        float vertical = Input.GetAxis("Vertical");
-       if (!dashing)
-       {
-           if (!guarding)
-           {
-               rb.MovePosition(
-                   Player.transform.position + new Vector3(horizontal, vertical, 0).normalized * PlayerSpeed);
-               if (horizontal > 0.1f || horizontal < -0.1f)
-               {
-                   //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
-                   //Player.transform.Translate(new Vector3(horizontal * PlayerSpeed, 0f, 0f));
-                   playerMoving = true;
-                   lastMove = new Vector2(horizontal, 0f);
-               }
+        
+        if(!Frozen)
+        {
+            if (!dashing)
+            {
+                if (!guarding)
+                {
+                    rb.MovePosition(
+                        Player.transform.position + new Vector3(horizontal, vertical, 0).normalized * PlayerSpeed);
+                    if (horizontal > 0.1f || horizontal < -0.1f)
+                    {
+                        //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
+                        //Player.transform.Translate(new Vector3(horizontal * PlayerSpeed, 0f, 0f));
+                        playerMoving = true;
+                        lastMove = new Vector2(horizontal, 0f);
+                    }
 
-               if (vertical > 0.1f || vertical < -0.1f)
-               {
-                   //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
-                   //Player.transform.Translate(new Vector3(0f, vertical * PlayerSpeed, 0f));
-                   playerMoving = true;
-                   lastMove = new Vector2(0f, vertical);
-               }
+                    if (vertical > 0.1f || vertical < -0.1f)
+                    {
+                        //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
+                        //Player.transform.Translate(new Vector3(0f, vertical * PlayerSpeed, 0f));
+                        playerMoving = true;
+                        lastMove = new Vector2(0f, vertical);
+                    }
 
-               anim.SetFloat("MoveX", horizontal);
-               anim.SetFloat("MoveY", vertical);
-               anim.SetBool("PlayerMoving", playerMoving);
-               anim.SetFloat("LastMoveX", lastMove.x);
-               anim.SetFloat("LastMoveY", lastMove.y);
+                    anim.SetFloat("MoveX", horizontal);
+                    anim.SetFloat("MoveY", vertical);
+                    anim.SetBool("PlayerMoving", playerMoving);
+                    anim.SetFloat("LastMoveX", lastMove.x);
+                    anim.SetFloat("LastMoveY", lastMove.y);
 
-               if (Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.LeftControl))
-               {
-                   if (StaminaController.getStamina() > this.GuardStaminaCost)
-                   {
-                        SetGuarding();
-                   }
-               }
-           }
-           else
-           {
-               if (Input.GetKeyUp(KeyCode.RightControl) || Input.GetKeyUp(KeyCode.LeftControl))
-               {
-                   SetNotGuarding();
-               }
-           }
-       }
+                    if (Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.LeftControl))
+                    {
+                        if (StaminaController.getStamina() > this.GuardStaminaCost)
+                        {
+                            SetGuarding();
+                        }
+                    }
+                }
+                else
+                {
+                    if (Input.GetKeyUp(KeyCode.RightControl) || Input.GetKeyUp(KeyCode.LeftControl))
+                    {
+                        SetNotGuarding();
+                    }
+                }
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
        {
@@ -131,6 +137,16 @@ public class MovementController : MonoBehaviour
             }
         }
 
+        if(FreezeTime > 0)
+        {
+            FreezeTime -= Time.deltaTime;
+        }
+        else
+        {
+            FreezeTime = 0;
+            this.Frozen = false;
+        }
+
         if (currDashCD > 0)
         {
             currDashCD -= Time.deltaTime;
@@ -154,5 +170,11 @@ public class MovementController : MonoBehaviour
         guarding = true;
         health.SetInvulnerable(true, GuardStaminaCost);
         renderer.color = GuardFilter;
+    }
+
+    public void FreezePlayer(float FreezeTime)
+    {
+        this.FreezeTime = FreezeTime;
+        this.Frozen = true;
     }
 }

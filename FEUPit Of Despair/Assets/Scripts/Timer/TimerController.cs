@@ -23,7 +23,6 @@ public class TimerController : MonoBehaviour
         if (timerText != null)
         {
             timerText.text = StartingTime + ":00";
-            InvokeRepeating("UpdateTimer", 0.0f, 0.01667f);
         }
     }
 
