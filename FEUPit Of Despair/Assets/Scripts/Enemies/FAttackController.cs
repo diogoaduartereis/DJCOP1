@@ -5,7 +5,8 @@ using UnityEngine;
 public class FAttackController : MonoBehaviour
 {
     public float MaxBulletLifetime = 20f;
-    public float FireballDamage = 1.0f;
+    public float FDamage = 1.0f;
+    public float FStaminaDamage = 1.0f;
     private float currentBulletLifetime;
 
     private GameObject FAttack;
@@ -50,7 +51,12 @@ public class FAttackController : MonoBehaviour
 
     public void setDamage(float damage)
     {
-        this.FireballDamage = damage;
+        this.FDamage = damage;
+    }
+
+    public void setStaminaDamage(float damage)
+    {
+        this.FStaminaDamage = damage;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -63,13 +69,17 @@ public class FAttackController : MonoBehaviour
                 {
                     if (playerHealthController != null)
                     {
-                        var playerHealth = playerHealthController.playerHit(FireballDamage);
+                        var playerHealth = playerHealthController.playerHit(FDamage);
                         if (playerHealth <= 0)
                         {
                             Destroy(other.gameObject);
                             Destroy(this.FAttack);
                             Application.Quit();
                         }
+                    }
+                    if (playerStaminaController != null)
+                    {
+                        playerStaminaController.playerHit(FStaminaDamage);
                     }
                 }
                 Destroy(this.FAttack);

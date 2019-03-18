@@ -35,6 +35,7 @@ public class VidalAttackController : MonoBehaviour
     public float fireballDamage;
     public float basketballDamage;
     public float FDamage;
+    public float FStaminaDamage;
 
     void Start()
     {
@@ -52,6 +53,16 @@ public class VidalAttackController : MonoBehaviour
         if (basketballDamage <= 0)
         {
             this.basketballDamage = 1;
+        }
+
+        if (FDamage <= 0)
+        {
+            this.FDamage = 1;
+        }
+
+        if (FStaminaDamage <= 0)
+        {
+            this.FStaminaDamage = 1;
         }
 
     }
@@ -82,8 +93,9 @@ public class VidalAttackController : MonoBehaviour
                 BasketballInst.GetComponentInChildren<FireBallController>().SetMovementDirection(directionBasketball);
 
                 //F attack
-                FInst.GetComponentInChildren<FireBallController>().setDamage(this.FDamage);
-                FInst.GetComponentInChildren<FireBallController>().SetMovementDirection(directionF);
+                FInst.GetComponentInChildren<FAttackController>().setDamage(this.FDamage);
+                FInst.GetComponentInChildren<FAttackController>().setStaminaDamage(this.FStaminaDamage);
+                FInst.GetComponentInChildren<FAttackController>().SetMovementDirection(directionF);
 
                 //sleepnote
                 SleepNoteInst.GetComponentInChildren<SleepNoteController>().SetMovementDirection(directionSleepNote);
