@@ -299,24 +299,21 @@ public class BoardCreator : MonoBehaviour
             {
                 for (int j = 0; j < this.EasyEnemyCount; j++)
                 {
-                    Instantiate(Enemy[0], new Vector3(rooms[i].xPos + 0.5f, rooms[i].yPos + 0.5f, 0),
-                        Quaternion.identity);
+                    SpawnRandomEnemy(i);
                 }
             }
             else if (rooms[i].GetDifficulty() == 1)
             {
                 for (int j = 0; j < this.NormalEnemyCount; j++)
                 {
-                    Instantiate(Enemy[0], new Vector3(rooms[i].xPos + 0.5f, rooms[i].yPos + 0.5f, 0),
-                        Quaternion.identity);
+                    SpawnRandomEnemy(i);
                 }
             }
             else if (rooms[i].GetDifficulty() == 2)
             {
                 for (int j = 0; j < this.HardEnemyCount; j++)
                 {
-                    Instantiate(Enemy[0], new Vector3(rooms[i].xPos + 0.5f, rooms[i].yPos + 0.5f, 0),
-                        Quaternion.identity);
+                    SpawnRandomEnemy(i);
                 }
             }
         }
@@ -347,5 +344,17 @@ public class BoardCreator : MonoBehaviour
     {
         Tuple<int, int> mid = room.GetRoomMiddleCoordinates();
         Instantiate(this.Objective, new Vector3(mid.Item1, mid.Item2, 0), Quaternion.identity);
+    }
+
+    void SpawnRandomEnemy(int roomIndex)
+    {
+        IntRange range = new IntRange(0, Enemy.Length);
+        int selected = range.Random;
+
+        IntRange roomXRange = new IntRange(rooms[roomIndex].xPos, rooms[roomIndex].xPos + rooms[roomIndex].roomWidth/2);
+        IntRange roomYRange = new IntRange(rooms[roomIndex].yPos, rooms[roomIndex].yPos + rooms[roomIndex].roomHeight/2);
+
+        Instantiate(Enemy[selected], new Vector3(roomXRange.Random, roomYRange.Random, 0),
+            Quaternion.identity);
     }
 }
