@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,10 @@ public class SimpleEnemy : MonoBehaviour
     public GameObject healthPickup;
 
     private Transform target;
+
+    public delegate void DeathDelegate();
+
+    private DeathDelegate callback = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +62,13 @@ public class SimpleEnemy : MonoBehaviour
 
     public void Death()
     {
+        callback?.Invoke();
         Instantiate(healthPickup, transform.position, healthPickup.transform.rotation); //your dropped sword
         Destroy(this.gameObject);
+    }
+
+    public void registerDeathCallback(DeathDelegate callback)
+    {
+        this.callback = callback;
     }
 }
