@@ -28,7 +28,7 @@ public class BulletController : MonoBehaviour
         currentBulletLifetime = MaxBulletLifetime;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (readyToUse)
         {
