@@ -139,3 +139,8 @@ MonoBehaviour:
   WaveCount: 5
   EnemiesPerWave: 10
   TimeBetweenWaves: 20
+  SpawnableEnemies:
+  - {fileID: 2433622068089463767, guid: 8c9b11bdfaf15d94493086e6d3813ace, type: 3}
+  - {fileID: 4065711567957105244, guid: 4ff524d7d230171498c0e43277d5c045, type: 3}
+  - {fileID: 1530956628554421995, guid: 5f9968ac536d3b94ea5d03b119c415ff, type: 3}
+  - {fileID: 7212699110553674139, guid: d33fad847e235c74abd1ad15fbc7f337, type: 3}
