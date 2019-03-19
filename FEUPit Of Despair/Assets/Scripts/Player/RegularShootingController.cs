@@ -45,6 +45,7 @@ public class RegularShootingController : MonoBehaviour
                     Instantiate(Bullet, Player.transform.position + ShootingOffset, Quaternion.identity) as GameObject;
                 newBullet.GetComponentInChildren<BulletController>().SetMovementDirection(direction);
 
+
                 newBullet.transform.parent = BulletHolder.transform;
             }
         }

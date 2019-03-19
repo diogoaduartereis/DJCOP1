@@ -218,6 +218,7 @@ MonoBehaviour:
   ShootingOffset: {x: -0.5, y: 0, z: 0}
   healthPickup: {fileID: 5937531269249459518, guid: 7f5402249f77ef6489ba2deaadcc6270,
     type: 3}
+  DeathAnim: {fileID: 7400000, guid: 366cae3faf334fc43add4bd50c89e3d4, type: 2}
 --- !u!95 &1530956628554421992
 Animator:
   serializedVersion: 3

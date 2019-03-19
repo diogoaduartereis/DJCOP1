@@ -35,6 +35,9 @@ public class MovementController : MonoBehaviour
     private float FreezeTime;
     private bool Frozen;
 
+    public AudioSource walkingSound;
+    private AudioSource dashSound;
+
     void Start()
     {
         Player = gameObject;
@@ -45,6 +48,8 @@ public class MovementController : MonoBehaviour
         RegularColor = renderer.color;
         StaminaController = this.GetComponent<StaminaController>();
         FreezeTime = 0;
+        walkingSound = this.GetComponents<AudioSource>()[0];
+        dashSound = this.GetComponents<AudioSource>()[1];
     }
     
     void FixedUpdate()
@@ -66,6 +71,8 @@ public class MovementController : MonoBehaviour
                         //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
                         //Player.transform.Translate(new Vector3(horizontal * PlayerSpeed, 0f, 0f));
                         playerMoving = true;
+                        if(!walkingSound.isPlaying)
+                            walkingSound.Play();
                         lastMove = new Vector2(horizontal, 0f);
                     }
 
@@ -74,6 +81,8 @@ public class MovementController : MonoBehaviour
                         //rb.MovePosition(Player.transform.position + new Vector3(horizontal, vertical, 0));
                         //Player.transform.Translate(new Vector3(0f, vertical * PlayerSpeed, 0f));
                         playerMoving = true;
+                        if (!walkingSound.isPlaying)
+                            walkingSound.Play();
                         lastMove = new Vector2(0f, vertical);
                     }
 
@@ -114,9 +123,13 @@ public class MovementController : MonoBehaviour
                     currDashCD = DashCooldown;
                     remainingDashTime = DashTime;
                     StaminaController.playerDash(this.DashCost);
+                    dashSound.Play();
                 }
             }
        }
+
+        if (!playerMoving)
+            walkingSound.Stop();
 
     }
 
