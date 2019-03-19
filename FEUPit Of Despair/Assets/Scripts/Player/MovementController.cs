@@ -37,7 +37,7 @@ public class MovementController : MonoBehaviour
 
     public AudioSource walkingSound;
     private AudioSource dashSound;
-
+    private PlayerStateHolder stateHolder;
     void Start()
     {
         Player = gameObject;
@@ -50,6 +50,7 @@ public class MovementController : MonoBehaviour
         FreezeTime = 0;
         walkingSound = this.GetComponents<AudioSource>()[0];
         dashSound = this.GetComponents<AudioSource>()[1];
+        stateHolder = this.GetComponent<PlayerStateHolder>();
     }
     
     void FixedUpdate()
@@ -158,6 +159,7 @@ public class MovementController : MonoBehaviour
         {
             FreezeTime = 0;
             this.Frozen = false;
+            this.stateHolder.frozen = false;
         }
 
         if (currDashCD > 0)
@@ -176,6 +178,7 @@ public class MovementController : MonoBehaviour
         guarding = false;
         health.SetInvulnerable(false, 0);
         renderer.color = RegularColor;
+        stateHolder.guarding = false;
     }
 
     public void SetGuarding()
@@ -183,11 +186,16 @@ public class MovementController : MonoBehaviour
         guarding = true;
         health.SetInvulnerable(true, GuardStaminaCost);
         renderer.color = GuardFilter;
+        stateHolder.guarding = true;
     }
 
     public void FreezePlayer(float FreezeTime)
     {
-        this.FreezeTime = FreezeTime;
-        this.Frozen = true;
+        if (!stateHolder.guarding)
+        {
+            this.FreezeTime = FreezeTime;
+            this.Frozen = true;
+            this.stateHolder.frozen = true;
+        }
     }
 }

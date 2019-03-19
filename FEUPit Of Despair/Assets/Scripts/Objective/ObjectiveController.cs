@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectiveController : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class ObjectiveController : MonoBehaviour
         if (remainingEnemies <= 0)
         {
             active = false;
-            Debug.Log("Test Clered");
+            SceneManager.LoadScene("BossScene",LoadSceneMode.Single);
         }
     }
 

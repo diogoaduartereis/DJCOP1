@@ -41,6 +41,11 @@ public class HealthController : MonoBehaviour
             }
         }
 
+        if (currentHealth <= 0)
+        {
+            Application.Quit();
+        }
+
         return currentHealth;
     }
 

@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class PlayerStateHolder : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool guarding = false;
+    public bool frozen = false;
 }

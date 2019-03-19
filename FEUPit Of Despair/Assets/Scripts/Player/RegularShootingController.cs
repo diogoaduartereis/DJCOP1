@@ -15,6 +15,7 @@ public class RegularShootingController : MonoBehaviour
     public GameObject Bullet;
 
     private GameObject BulletHolder;
+    private PlayerStateHolder stateHolder;
 
     void Start()
     {
@@ -22,31 +23,37 @@ public class RegularShootingController : MonoBehaviour
 
         Player = gameObject;
         rb = GetComponent<Rigidbody2D>();
+
+        stateHolder = GetComponent<PlayerStateHolder>();
     }
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (!stateHolder.frozen && !stateHolder.guarding)
         {
-            if (CurrentShootingCooldown <= 0)
+            if (Input.GetKey(KeyCode.Mouse0))
             {
-                CurrentShootingCooldown = ShootingCooldown;
-                //translate the mouse screen coordinate to in-game world coordinates
-                Vector3 mousePos = Input.mousePosition;
-                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+                if (CurrentShootingCooldown <= 0)
+                {
+                    CurrentShootingCooldown = ShootingCooldown;
+                    //translate the mouse screen coordinate to in-game world coordinates
+                    Vector3 mousePos = Input.mousePosition;
+                    mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-                Vector3 playerPos = Player.transform.position + ShootingOffset;
+                    Vector3 playerPos = Player.transform.position + ShootingOffset;
 
-                //calculate general direction for the buller
-                Vector3 direction = new Vector3(mousePos.x - playerPos.x, mousePos.y - playerPos.y, 0).normalized;
+                    //calculate general direction for the buller
+                    Vector3 direction = new Vector3(mousePos.x - playerPos.x, mousePos.y - playerPos.y, 0).normalized;
 
-                //create buller and give it a direction to move in
-                GameObject newBullet =
-                    Instantiate(Bullet, Player.transform.position + ShootingOffset, Quaternion.identity) as GameObject;
-                newBullet.GetComponentInChildren<BulletController>().SetMovementDirection(direction);
+                    //create buller and give it a direction to move in
+                    GameObject newBullet =
+                        Instantiate(Bullet, Player.transform.position + ShootingOffset, Quaternion.identity) as
+                            GameObject;
+                    newBullet.GetComponentInChildren<BulletController>().SetMovementDirection(direction);
 
 
-                newBullet.transform.parent = BulletHolder.transform;
+                    newBullet.transform.parent = BulletHolder.transform;
+                }
             }
         }
     }
