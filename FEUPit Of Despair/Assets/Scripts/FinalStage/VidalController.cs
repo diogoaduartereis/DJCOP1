@@ -23,6 +23,10 @@ public class VidalController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (transform == null || target == null)
+        {
+            return;
+        }
         if (Vector2.Distance(transform.position, target.position) < stoppingDistance && Vector2.Distance(transform.position, target.position) > 0.6)
         {
             direction = (target.transform.position - transform.position).normalized;
