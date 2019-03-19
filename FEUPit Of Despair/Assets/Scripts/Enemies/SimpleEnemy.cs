@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class SimpleEnemy : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class SimpleEnemy : MonoBehaviour
 
     public delegate void DeathDelegate();
 
+    public float HealthDropChance = 0.4f;
+
     private DeathDelegate callback = null;
     // Start is called before the first frame update
     void Start()
@@ -30,6 +33,10 @@ public class SimpleEnemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (transform == null || target == null)
+        {
+            return;
+        }
         if(Vector2.Distance(transform.position, target.position) < stoppingDistance && Vector2.Distance(transform.position, target.position) > 0.6)
         {
             direction = (target.transform.position - transform.position).normalized;
@@ -63,7 +70,12 @@ public class SimpleEnemy : MonoBehaviour
     public void Death()
     {
         callback?.Invoke();
-        Instantiate(healthPickup, transform.position, healthPickup.transform.rotation); //your dropped sword
+        float val = UnityEngine.Random.value;
+        if (val <= HealthDropChance)
+        {
+            Instantiate(healthPickup, transform.position, healthPickup.transform.rotation);
+        }
+
         Destroy(this.gameObject);
     }
 

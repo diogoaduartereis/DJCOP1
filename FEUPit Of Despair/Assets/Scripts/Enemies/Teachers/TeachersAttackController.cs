@@ -31,6 +31,10 @@ public class TeachersAttackController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (transform == null || target == null)
+        {
+            return;
+        }
         if (Vector2.Distance(transform.position, target.position) < stoppingDistance)
         {
             if (CurrentShootingCooldown <= 0)
