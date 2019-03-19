@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Enemy Projectile
   - Pickup
+  - Vidal
   layers:
   - Default
   - TransparentFX

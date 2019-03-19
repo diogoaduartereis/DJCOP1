@@ -57,4 +57,9 @@ public class AttackController : MonoBehaviour
             CurrentShootingCooldown = 0;
         }
     }
+
+    public void destroyHolder()
+    {
+        Destroy(this.BulletHolder);
+    }
 }

@@ -57,7 +57,7 @@ public class SleepNoteController : MonoBehaviour
     {
         if (readyToUse)
         {
-            if (!other.CompareTag("Enemy") && !other.CompareTag("Enemy Projectile") && !other.CompareTag("Bullet") && !other.CompareTag("Pickup"))
+            if (!other.CompareTag("Enemy") && !other.CompareTag("Vidal") && !other.CompareTag("Enemy Projectile") && !other.CompareTag("Bullet") && !other.CompareTag("Pickup"))
             {
                 if (other.CompareTag("Player"))
                 {
