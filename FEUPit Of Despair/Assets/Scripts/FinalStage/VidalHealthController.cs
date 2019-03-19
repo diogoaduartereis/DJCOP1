@@ -13,8 +13,6 @@ public class VidalHealthController : MonoBehaviour
     public GameObject Torcato;
     public GameObject ToFerreira;
     public GameObject Villate;
-    public int amountOfEnemyTypesPerRound = 2;
-    private int typeLength;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +21,6 @@ public class VidalHealthController : MonoBehaviour
         HP75 = startingHealth - (startingHealth / 4);
         HP50 = startingHealth - 2*(startingHealth / 4);
         HP25 = startingHealth - 3*(startingHealth / 4);
-        typeLength = amountOfEnemyTypesPerRound;
     }
 
     // Update is called once per frame
@@ -39,38 +36,24 @@ public class VidalHealthController : MonoBehaviour
 
         if(HP75 <= currentHealth + 0.3 && HP75 >= currentHealth - 0.3)
         {
-            while(typeLength > 0)
-            {
-                GameObject TeachersInst = Instantiate(Teachers, (new Vector3(1, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
-                GameObject TorcatoInst = Instantiate(Torcato, (new Vector3(2, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
-                GameObject ToFerreiraInst = Instantiate(ToFerreira, (new Vector3(-1, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
-                GameObject VillateFInst = Instantiate(Villate, (new Vector3(-2, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
-                typeLength--;
-            }
-            typeLength = this.amountOfEnemyTypesPerRound;
+            GameObject TeachersInst = Instantiate(Teachers, (new Vector3(1, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
+            GameObject TorcatoInst = Instantiate(Torcato, (new Vector3(2, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
+            GameObject ToFerreiraInst = Instantiate(ToFerreira, (new Vector3(-1, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
+            GameObject VillateFInst = Instantiate(Villate, (new Vector3(-2, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
         }
         else if (HP50 <= currentHealth + 0.3 && HP50 >= currentHealth - 0.3)
         {
-            while (typeLength > 0)
-            {
-                GameObject TeachersInst = Instantiate(Teachers, (new Vector3(1, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
-                GameObject TorcatoInst = Instantiate(Torcato, (new Vector3(2, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
-                GameObject ToFerreiraInst = Instantiate(ToFerreira, (new Vector3(-1, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
-                GameObject VillateFInst = Instantiate(Villate, (new Vector3(-2, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
-            }
-            typeLength = this.amountOfEnemyTypesPerRound;
+            GameObject TeachersInst = Instantiate(Teachers, (new Vector3(1, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
+            GameObject TorcatoInst = Instantiate(Torcato, (new Vector3(2, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
+            GameObject ToFerreiraInst = Instantiate(ToFerreira, (new Vector3(-1, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
+            GameObject VillateFInst = Instantiate(Villate, (new Vector3(-2, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
         }
         else if (HP25 <= currentHealth + 0.3 && HP25 >= currentHealth - 0.3)
         {
-            while (typeLength > 0)
-            {
-                GameObject TeachersInst = Instantiate(Teachers, (new Vector3(1, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
-                GameObject TorcatoInst = Instantiate(Torcato, (new Vector3(2, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
-                GameObject ToFerreiraInst = Instantiate(ToFerreira, (new Vector3(-1, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
-                GameObject VillateFInst = Instantiate(Villate, (new Vector3(-2, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
-                typeLength--;
-            }
-            typeLength = this.amountOfEnemyTypesPerRound;
+            GameObject TeachersInst = Instantiate(Teachers, (new Vector3(1, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
+            GameObject TorcatoInst = Instantiate(Torcato, (new Vector3(2, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
+            GameObject ToFerreiraInst = Instantiate(ToFerreira, (new Vector3(-1, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
+            GameObject VillateFInst = Instantiate(Villate, (new Vector3(-2, -1, 0) + transform.position), Quaternion.Euler(new Vector2(0, 0))) as GameObject;
         }
         return currentHealth;
     }

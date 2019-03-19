@@ -86,6 +86,7 @@ public class FireBallController : MonoBehaviour
                             Destroy(this.Fireball);
                             Application.Quit();
                         }
+                        Destroy(this.Fireball);
                     }
                 }
                 Destroy(this.Fireball);
