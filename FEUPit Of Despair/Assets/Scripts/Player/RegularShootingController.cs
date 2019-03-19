@@ -55,6 +55,10 @@ public class RegularShootingController : MonoBehaviour
                     newBullet.transform.parent = BulletHolder.transform;
                 }
             }
+            else if (Input.GetKey(KeyCode.Escape))
+            {
+                Application.LoadLevel(0); ;
+            }
         }
     }
 
