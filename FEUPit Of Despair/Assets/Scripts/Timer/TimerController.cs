@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TimerController : MonoBehaviour
 {
@@ -29,6 +30,10 @@ public class TimerController : MonoBehaviour
             StartingTime -= Time.deltaTime;
             string minutes = Mathf.Floor(StartingTime / 60).ToString("00");
             string seconds = (StartingTime % 60).ToString("00");
+            if (minutes == "00" && seconds == "00")
+            {
+                SceneManager.LoadScene("GameOverMenu");
+            }
             timerText.text = minutes + ":" + seconds;
         }
     }
