@@ -50,6 +50,7 @@ public class BulletController : MonoBehaviour
             {
                 if (other.CompareTag("Enemy"))
                 {
+                    GameObject.FindGameObjectWithTag("PickupSound").GetComponents<AudioSource>()[1].Play();
                     var enemyHealth = other.gameObject.GetComponent<Enemy1HealthController>().enemyHit(BulletDamage);
                     if (enemyHealth <= 0)
                     {
@@ -58,6 +59,7 @@ public class BulletController : MonoBehaviour
                 }
                 else if (other.CompareTag("Vidal"))
                 {
+                    GameObject.FindGameObjectWithTag("PickupSound").GetComponents<AudioSource>()[1].Play();
                     var enemyHealth = other.gameObject.GetComponent<VidalHealthController>().enemyHit(BulletDamage);
                     if (enemyHealth <= 0)
                     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FAttackController : MonoBehaviour
 {
@@ -67,6 +68,7 @@ public class FAttackController : MonoBehaviour
             {
                 if (other.CompareTag("Player"))
                 {
+                    GameObject.FindGameObjectWithTag("PickupSound").GetComponents<AudioSource>()[2].Play();
                     if (playerHealthController != null)
                     {
                         var playerHealth = playerHealthController.playerHit(FDamage);
@@ -74,7 +76,7 @@ public class FAttackController : MonoBehaviour
                         {
                             Destroy(other.gameObject);
                             Destroy(this.FAttack);
-                            Application.Quit();
+                            SceneManager.LoadScene("GameOverMenu");
                         }
                     }
                     if (playerStaminaController != null)

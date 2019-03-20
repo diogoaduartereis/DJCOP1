@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class FireBallController : MonoBehaviour
 {
@@ -77,6 +79,7 @@ public class FireBallController : MonoBehaviour
             {
                 if (other.CompareTag("Player"))
                 {
+                    GameObject.FindGameObjectWithTag("PickupSound").GetComponents<AudioSource>()[2].Play();
                     if (playerHealthController != null)
                     {
                         var playerHealth = playerHealthController.playerHit(FireballDamage);
@@ -84,7 +87,7 @@ public class FireBallController : MonoBehaviour
                         {
                             Destroy(other.gameObject);
                             Destroy(this.Fireball);
-                            Application.Quit();
+                            SceneManager.LoadScene("GameOverMenu");
                         }
                         Destroy(this.Fireball);
                     }

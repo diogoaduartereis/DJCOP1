@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 8461355047676979993}
   - component: {fileID: 8461355047676979992}
   - component: {fileID: 8461355047676980007}
-  - component: {fileID: 1577299940433192777}
+  - component: {fileID: 3688838040899092577}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -166,7 +166,7 @@ MonoBehaviour:
   MaxBulletLifetime: 10
   BulletDamage: 1
   BulletSpeed: 8
---- !u!82 &1577299940433192777
+--- !u!82 &3688838040899092577
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
