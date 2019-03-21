@@ -11,7 +11,8 @@ public class ObjectiveController : MonoBehaviour
     public int EnemiesPerWave = 10;
     public int TimeBetweenWaves = 20;
 
-    private bool active = false;
+    private bool active = true;
+
 
     private int remainingEnemies;
 
@@ -35,12 +36,17 @@ public class ObjectiveController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (active)
         {
-            for (int i = 0;i< EnemiesPerWave; ++i)
+            if (other.CompareTag("Player"))
             {
-                GameObject mob =  Instantiate(SpawnableEnemies[0], transform.position, Quaternion.identity) as GameObject;
-                mob.GetComponent<SimpleEnemy>().registerDeathCallback(DeathCallback);
+                for (int i = 0; i < EnemiesPerWave; ++i)
+                {
+                    IntRange range = new IntRange(0,SpawnableEnemies.Length);
+                    GameObject mob =
+                        Instantiate(SpawnableEnemies[range.Random], transform.position, Quaternion.identity) as GameObject;
+                    mob.GetComponent<SimpleEnemy>().registerDeathCallback(DeathCallback);
+                }
             }
         }
     }
