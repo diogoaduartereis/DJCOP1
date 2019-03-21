@@ -27,6 +27,11 @@ public class gameOver : MonoBehaviour
         exitText.enabled = false;
     }
 
+    public void MainMenu()
+    {
+        Application.LoadLevel(0);
+    }
+
     public void NoPress()
     {
         quitMenu.enabled = false;
