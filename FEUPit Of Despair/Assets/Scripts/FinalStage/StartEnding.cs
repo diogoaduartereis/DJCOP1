@@ -20,7 +20,7 @@ public class StartEnding : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-           Application.Quit();
+            Application.LoadLevel("FinalScene");
         }
     }
 }
